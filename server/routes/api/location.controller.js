@@ -16,18 +16,14 @@ const retrieveData = (req)=>{
   return data;
 }
 
-/*
-  Get all Locations
-*/
+/*  Get all Locations */
 router.get('/',loggedIn, (req, res, next) => {
     Location.find({})
       .then( items =>{ res.status(200).json(items);})
       .catch( (err)=>{res.status(500).json(err);})
 });
 
-/*
-  add new Location
-*/
+/*  add new Location */
 router.post('/', loggedIn, (req, res, next) => {
   const newObj = new Location(retrieveData(req));
 
@@ -36,35 +32,29 @@ router.post('/', loggedIn, (req, res, next) => {
     .catch( (err) => res.status(500).json(err));
 });
 
-/*
-  Get particular Location by your ID
-*/
+/*  Get particular Location by your ID */
 router.get('/:id', loggedIn, isObjIdValid,(req,res,next) => {
   Location.findById(req.params.id)
     .then( item => res.status(200).json(item))
     .catch((err) => res.status(500).json(err))
 });
 
-/*
-  Delete particular Location by your ID
-*/
+/*   Delete particular Location by your ID */
 router.delete('/:id',loggedIn, isObjIdValid,(req,res,next) => {
   Location.remove({_id:req.params.id})
     .then( () => res.status(200).json("Location has been removed!"))
     .catch((err) => res.status(500).json(err))
 });
 
-/*
-  Edit a Location
-*/
+/*  Edit a Location */
 router.put('/:id', loggedIn, isObjIdValid, (req,res,next)=>{
-const updateObj = retrieveData(req);
+  const updateObj = retrieveData(req);
 
-Location.findByIdAndUpdate(req.params.id,updateObj,{new:true})
-  .then(item=>{
-    console.log(item);
-    res.status(200).json(item);})
-  .catch( (err)=> res.status(500).json(err))
+  Location.findByIdAndUpdate(req.params.id,updateObj,{new:true})
+    .then(item=>{
+      console.log(item);
+      res.status(200).json(item);})
+    .catch( (err)=> res.status(500).json(err))
 });
 
 

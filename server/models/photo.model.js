@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
-const User = require('./User.model');
+const User = require('./user.model');
 const Location = require('./location.model');
 
 
@@ -17,4 +17,4 @@ const photoSchema = new Schema({
     }
 );
 
-module.exports = mongoose.model('Photo', phototSchema);
+module.exports = mongoose.model('Photo', photoSchema);

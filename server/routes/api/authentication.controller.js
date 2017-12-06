@@ -107,7 +107,7 @@ router.get('/private', (req, res, next) => {
 /*
   Edit a User
 */
-router.put('/edit', loggedIn, (req,res,next)=>{
+router.put('/edit',  loggedIn,(req,res,next)=>{
   const updateObj = retrieveData(req);
   User.findOne( {username:updateObj.username} , (err, foundUser) => {
     if (foundUser) {

@@ -1,3 +1,8 @@
-<p>
-  home works!
-</p>
+<p>home works!</p>
+<div *ngIf="!user" class="links">
+  <a [routerLink]="['../login']">Login</a>
+  <a [routerLink]="['../register']">Register</a>
+</div>
+<div *ngIf="user" class="private">
+  <button (click)="authService.logout().subscribe()">Logout</button>
+</div>
