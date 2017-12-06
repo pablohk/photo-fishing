@@ -3,6 +3,23 @@ const passport = require('passport');
 const router   = express.Router();
 const User     = require('../../models/user.model');
 const bcrypt   = require('bcrypt');
+const isObjIdValid=require('../../utils/isObjIdValid');
+const loggedIn = require('../../utils/isAuthenticated');
+/*
+  Middleware for retrieve all data of User
+*/
+
+const retrieveData = (req)=>{
+  const data ={
+    username:req.body.username,
+    password:req.body.password,
+    email:req.body.email,
+    age:req.body.age,
+    city:req.body.city,
+    preferFish:req.body.preferFish
+  }
+  return data;
+}
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, failureDetails) => {
@@ -28,36 +45,26 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  const email = req.body.email;
-  const age = req.body.age;
-  const city = req.body.city;
-  const preferFish = req.body.preferFish;
 
-  if (!username || !password) {
+  let newObj =retrieveData(req);
+
+  if (!newObj.username || !newObj.password) {
     res.status(400).json({ message: 'Provide username and password' });
     return;
   }
 
-  User.findOne({ username }, (err, foundUser) => {
+  User.findOne( {username:newObj.username} , (err, foundUser) => {
     if (foundUser) {
       res.status(400).json({ message: 'The username already exists' });
       return;
     }
 
     const salt     = bcrypt.genSaltSync(10);
-    const hashPass = bcrypt.hashSync(password, salt);
+    //const hashPass = bcrypt.hashSync(newObj.password, salt);
+     newObj.password = bcrypt.hashSync(newObj.password, salt);
+       console.log(newObj.password);
+     const theUser =new User(newObj);
 
-    const theUser = new User({
-      username,
-      password: hashPass,
-      email,
-      age,
-      city,
-      preferFish
-    });
-    console.log(theUser);
     theUser.save((err) => {
       if (err) {
         res.status(500).json({ message: 'Something went wrong' });
@@ -95,6 +102,23 @@ router.get('/private', (req, res, next) => {
     return;
   }
   res.status(403).json({ message: 'Unauthorized' });
+});
+
+/*
+  Edit a User
+*/
+router.put('/edit', loggedIn, (req,res,next)=>{
+  const updateObj = retrieveData(req);
+  User.findOne( {username:updateObj.username} , (err, foundUser) => {
+    if (foundUser) {
+      res.status(400).json({ message: 'The username already exists' });
+      return;
+    }
+    User.findByIdAndUpdate(req.user._id,updateObj,{new:true})
+      .then(item=>res.status(200).json(item))
+      .catch( (err)=> res.status(500).json(err))
+  });
+
 });
 
 module.exports = router;
