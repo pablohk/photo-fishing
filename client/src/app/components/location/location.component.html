@@ -1,0 +1,19 @@
+<p>location works!</p>
+<div class="container">
+<div class="list">
+  <agm-map [latitude]="latInit" [longitude]="lonInit" (mapClick)="mapClicked($event)">
+
+    <agm-marker *ngFor="let e of ListLocation; let i = index"
+        [latitude]=e.lat
+        [longitude]=e.lon>
+      <agm-info-window>{{e.name}}</agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
+  <div *ngFor="let e of ListLocation">
+    <div>{{e.name}}</div>
+  <div>Lat: {{e.lat}} Lon:{{e.lon}}</div>
+  <div>{{e.rating}}</div>
+</div>
+</div>
+    <!-- <div *ngFor="let e of ListLocation"> -->

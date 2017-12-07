@@ -23,6 +23,7 @@ router.get('/',loggedIn, (req, res, next) => {
       .catch( (err)=>{res.status(500).json(err);})
 });
 
+
 /*  add new Location */
 router.post('/', loggedIn, (req, res, next) => {
   const newObj = new Location(retrieveData(req));
