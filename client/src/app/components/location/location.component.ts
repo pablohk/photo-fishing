@@ -19,9 +19,9 @@ import { Location } from '../../models/Location.model'
 
 export class LocationComponent implements OnInit {
 
-  latInit: number = 40.75693;
-  lonInit: number = -3.621271;;
-  backgroundColor:'#000';
+  latInit: Number;
+  lonInit: Number;
+  zoom :number ;
 
   private location : Location;
   private ListLocation : Array<Location>;
@@ -32,6 +32,9 @@ export class LocationComponent implements OnInit {
                private locationService : LocationService) { }
 
   ngOnInit() {
+
+    this.setCurrentPosition();
+
       this.locationService.getAll().subscribe(
         (items)=> {this.ListLocation=items},
         (err)=> {this.error=err.message}
@@ -40,16 +43,32 @@ export class LocationComponent implements OnInit {
 
     selectLocation(id: String): void {
         this.locationService.getById(id).subscribe(
-          (item)=> {this.location=item},
+          (item)=>
+            {
+              this.location=item;
+              this.latInit=item.lat;
+              this.lonInit=item.lon;
+            },
           (err)=> {this.error=err}
         );
     }
+
+    private setCurrentPosition() {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.latInit = position.coords.latitude;
+          this.lonInit = position.coords.longitude;
+          this.zoom = 13;
+        });
+      }
+    }
+
 
  mapClicked($event) {
    console.log($event.coords);
  }
 
- photoList(id){
-   console.log("ir listado de fotos");
- }
+ // photoList(id){
+ //   console.log("ir listado de fotos");
+ // }
 }

@@ -4,7 +4,7 @@
     </select>
   <br>
   <div class="map">
-    <agm-map [latitude]="latInit" [longitude]="lonInit" [usePanning]="true" (mapClick)="mapClicked($event)">
+    <agm-map [latitude]="latInit" [longitude]="lonInit" [zoom]="zoom"  (mapClick)="mapClicked($event)">
       <agm-marker [latitude]=location?.lat [longitude]=location?.lon>
         <agm-info-window>Rating {{location?.rating}}</agm-info-window>
       </agm-marker>
