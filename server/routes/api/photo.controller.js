@@ -5,6 +5,7 @@ const Location = require('../../models/location.model');
 const User = require('../../models/user.model');
 const Photo = require('../../models/photo.model');
 const isObjIdValid=require('../../utils/isObjIdValid');
+const upload = require('../../config/multer');
 
 /*   Get all Photo */
 router.get('/', loggedIn, (req, res, next) => {
@@ -40,24 +41,42 @@ router.get('/byLocation/:id', loggedIn, isObjIdValid,  (req, res, next) => {
 
 
 /*  Add  Photo */
-router.post('/:id', loggedIn, isObjIdValid,  (req, res, next) => {
+// router.post('/:id', loggedIn, isObjIdValid,  (req, res, next) => {
+//
+//  const title = req.body.title;
+//  const description = req.body.description;
+//  const imageURL = req.body.imageURL;
+//  const priv = req.body.priv;
+//
+//  const newObj = new Photo({
+//     _user : req.user._id,
+//     _location : req.params.id,
+//     title,
+//     description,
+//     imageURL,
+//     priv });
+//     //res.status(200).json(newObj);
+//   newObj.save()
+//     .then( item => res.status(200).json(item))
+//     .catch ((err) => res.status(500).json(err))
+// });
 
- const title = req.body.title;
- const description = req.body.description;
- const imageURL = req.body.imageURL;
- const priv = req.body.priv;
 
+/*  Add  Photo with multer*/
+router.post('/:id', upload.single('file'), loggedIn,  (req, res, next) => {
  const newObj = new Photo({
     _user : req.user._id,
     _location : req.params.id,
-    title,
-    description,
-    imageURL,
-    priv });
-    //res.status(200).json(newObj);
-  newObj.save()
-    .then( item => res.status(200).json(item))
-    .catch ((err) => res.status(500).json(err))
+    title: req.body.title,
+    description : req.body.description,
+    imageURL : `uploads/${req.file.filename}`,
+    priv : req.body.priv });
+    console.log(newObj);
+    console.log(req.body.priv);
+    
+  // newObj.save()
+  //   .then( item => res.status(200).json(item))
+  //   .catch ((err) => res.status(500).json(err))
 });
 
 /*   Delete particular Photo by your ID */

@@ -3,12 +3,15 @@ import { Http, RequestOptions, Headers , Response} from '@angular/http';
 import { environment } from '../../environments/environment';
 import { Observable , Subject} from 'rxjs/Rx';
 import 'rxjs';
+
+//MODELS
 import { User } from '../models/User.model'
-import { Location } from '../models/Location.model'
+import { Photo } from '../models/Photo.model'
 
 @Injectable()
-export class LocationService {
-  private baseUrl = `${environment.apiUrl}/api/location`;
+export class PhotoService {
+
+  private baseUrl = `${environment.apiUrl}/api/photo`;
   private options ={withCredentials: true };
 
   private user: User;
@@ -18,16 +21,29 @@ export class LocationService {
 
   }
 
-  getAll():Observable<Array<Location>> {
+  getAll():Observable<Array<Photo>> {
     return this.http.get(`${this.baseUrl}/`,this.options)
             .map(res => res.json())
             .catch (this.handleError);
   }
-  getById(id):Observable<Location>{
+  getById(id):Observable<Photo>{
     return this.http.get(`${this.baseUrl}/${id}`,this.options)
             .map(res=> res.json())
             .catch(this.handleError);
   }
+
+  add(id,photo):Observable<Photo>{
+    console.log("---- En el servicio photo: add");
+    console.log(id);
+    console.log(photo);
+    return this.http.post(`${this.baseUrl}/${id}`, photo, this.options)
+          .map(res=> res.json())
+          .catch(this.handleError);
+  }
+
+  photoLocationId(locationId){
+    console.log(locationId);
+}
 
   protected handleError (error :Response | any ): Observable<any> {
     console.log( error );
