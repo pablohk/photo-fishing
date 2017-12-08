@@ -20,7 +20,7 @@ const routes : Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'location', component: LocationComponent },
-  { path: 'photo/list', component: PhotoListComponent },
+  { path: 'photo/list/:id', component: PhotoListComponent },
   { path: 'photo/add/:id', component: AddPhotoComponent },
   { path: 'photo', component: PhotoComponent },
   { path: '**', redirectTo: 'login' }

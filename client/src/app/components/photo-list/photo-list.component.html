@@ -1,3 +1,10 @@
-<p>
-  photo-list works!
-</p>
+<p> photo-list works!</p>
+{{listPhotos | json}}
+<div class="container" *ngFor="let e of listPhotos">
+  <div>
+    <p>{{e.title}}</p>
+    <p>{{e.description}}</p>
+    <p>{{e._location_name}}</p>
+    <img src="http://localhost:3000/{{e.imageURL}}" alt="{{e.title}}">
+  </div>
+</div>

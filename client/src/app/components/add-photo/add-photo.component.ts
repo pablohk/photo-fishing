@@ -1,6 +1,6 @@
-import { Component, OnInit , OnDestroy } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { FileUploader } from "ng2-file-upload";
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 
@@ -18,54 +18,45 @@ import { Location } from '../../models/Location.model'
   styleUrls: ['./add-photo.component.css'],
     providers: [PhotoService, LocationService]
 })
-export class AddPhotoComponent implements OnInit , OnDestroy{
-  private sub: any;
-  private location_id: String;
+export class AddPhotoComponent implements OnInit {
+
   private error: String;
-  private  uploader: FileUploader = new FileUploader({
-     url: `${environment.apiUrl}/api/photo/5a2719c3dbd8833ef6f6179b`
-   });
-  photo : Photo;
+  private  uploader: FileUploader;
 
   newPhoto ={
     title: '',
     description: '',
-    priv: true
+    priv: true,
+    _location:''
   }
 
   constructor(private photoService : PhotoService ,
               public locationService : LocationService,
               public route : ActivatedRoute) {
-      this.sub = this.route.params.subscribe(params => {
-        this.location_id = params['id'];
-        console.log("----------en route paramas");
-        console.log(params['id']);
+        this.route.params.subscribe(params => {
+        this.newPhoto._location = params.id;
       }
     );
+    this.uploader=new FileUploader({
+       url: `${environment.apiUrl}/api/photo/${this.newPhoto._location}`});
   }
 
   ngOnInit() { }
 
-   ngOnDestroy() {
-      //this.sub.unsubscribe();
-    }
 
   submit() {
     this.addToFolder();
-    //'5a2719c3dbd8833ef6f6179b'
-    console.log("----------");
-    console.log(this.location_id);
-    this.photoService.add(this.location_id,this.newPhoto).subscribe(
-      (item)=> {this.photo=item},
-      (err)=> {this.error=err}
-    );
+    console.log("----------submit method");
+    console.log(this.newPhoto);
+    // this.photoService.add(this.newPhoto).subscribe(
+    //   (item)=> {this.photo=item},
+    //   (err)=> {this.error=err}
+    // );
 }
 
-private change(){
-  this.newPhoto.priv=!this.newPhoto;
-}
 
 private addToFolder():void {
+
    this.uploader.onBuildItemForm = (item, form) => {
     form.append('title', this.newPhoto.title);
     form.append('description', this.newPhoto.description);

@@ -39,44 +39,22 @@ router.get('/byLocation/:id', loggedIn, isObjIdValid,  (req, res, next) => {
     .catch( (err)=>{res.status(500).json(err);})
 });
 
-
-/*  Add  Photo */
-// router.post('/:id', loggedIn, isObjIdValid,  (req, res, next) => {
-//
-//  const title = req.body.title;
-//  const description = req.body.description;
-//  const imageURL = req.body.imageURL;
-//  const priv = req.body.priv;
-//
-//  const newObj = new Photo({
-//     _user : req.user._id,
-//     _location : req.params.id,
-//     title,
-//     description,
-//     imageURL,
-//     priv });
-//     //res.status(200).json(newObj);
-//   newObj.save()
-//     .then( item => res.status(200).json(item))
-//     .catch ((err) => res.status(500).json(err))
-// });
-
-
 /*  Add  Photo with multer*/
-router.post('/:id', upload.single('file'), loggedIn,  (req, res, next) => {
+router.post('/:locationId', upload.single('file'), loggedIn,  (req, res, next) => {
+console.log(req.body);
  const newObj = new Photo({
     _user : req.user._id,
-    _location : req.params.id,
+    _location : req.params.locationId,
     title: req.body.title,
     description : req.body.description,
     imageURL : `uploads/${req.file.filename}`,
     priv : req.body.priv });
+
     console.log(newObj);
-    console.log(req.body.priv);
-    
-  // newObj.save()
-  //   .then( item => res.status(200).json(item))
-  //   .catch ((err) => res.status(500).json(err))
+
+    newObj.save()
+      .then( item => res.status(200).json(item))
+      .catch ((err) => res.status(500).json(err))
 });
 
 /*   Delete particular Photo by your ID */

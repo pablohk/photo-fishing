@@ -16,6 +16,7 @@
     <p>{{location._id}}</p>
     <p *ngIf="location.priv"> Location private</p>
     <p *ngIf="!location.priv"> Location public</p>
-    <a [routerLink]="['../photo/add',location._id]">Add Photo to this location</a>
+    <a [routerLink]="['../photo/add',location._id]">Add Photo to this location</a><br>
+    <a [routerLink]="['../photo/list',location._id]">View all Photos of this location</a>
   </div>
 </div>

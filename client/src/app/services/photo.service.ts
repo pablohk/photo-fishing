@@ -32,11 +32,22 @@ export class PhotoService {
             .catch(this.handleError);
   }
 
-  add(id,photo):Observable<Photo>{
+  getMyPhotos():Observable<Array<Photo>>{
+    return this.http.get(`${this.baseUrl}/myPhoto`,this.options)
+            .map(res => res.json())
+            .catch (this.handleError);
+  }
+
+  getByLocation(id):Observable<Array<Photo>>{
+    return this.http.get(`${this.baseUrl}/byLocation/${id}`,this.options)
+            .map(res => res.json())
+            .catch (this.handleError);
+  }
+
+  add(photo):Observable<Photo>{
     console.log("---- En el servicio photo: add");
-    console.log(id);
     console.log(photo);
-    return this.http.post(`${this.baseUrl}/${id}`, photo, this.options)
+    return this.http.post(`${this.baseUrl}/${photo._location}`, photo, this.options)
           .map(res=> res.json())
           .catch(this.handleError);
   }
