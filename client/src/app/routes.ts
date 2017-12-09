@@ -29,6 +29,6 @@ const routes : Routes = [
   { path: 'photo', component: PhotoComponent  },
   { path: 'weather', component: WeatherTodayComponent  },
   { path: 'weather/forecast', component: WeatherForecastComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'weather' }
 ];
 export { routes }

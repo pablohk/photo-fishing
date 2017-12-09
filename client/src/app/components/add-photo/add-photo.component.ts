@@ -60,6 +60,7 @@ private addToFolder():void {
    this.uploader.onBuildItemForm = (item, form) => {
     form.append('title', this.newPhoto.title);
     form.append('description', this.newPhoto.description);
+    form.append('priv', this.newPhoto.priv);
   };
   this.uploader.uploadAll();
 }
