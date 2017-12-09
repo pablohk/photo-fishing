@@ -18,7 +18,7 @@ export class IsLoggedInService implements CanActivate {
     if(this.authService.getUser()){
       return true;
     }else {
-      this.router.navigate(['login',{error : "Unauthorized permisson"}]);
+      this.router.navigate(['login',{error : "Unauthorized permisson. Please Logged or "}]);
       //alert("You are not logged");
       return false;
     }

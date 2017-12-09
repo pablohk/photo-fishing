@@ -1,5 +1,5 @@
 <p> photo-list works!</p>
-{{listPhotos | json}}
+<p class="error" *ngIf="error">{{ error }}</p>
 <div class="container" *ngFor="let e of listPhotos">
   <div>
     <p>{{e.title}}</p>

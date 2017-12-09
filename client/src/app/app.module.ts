@@ -13,8 +13,7 @@ import { environment } from '../environments/environment';
 // SERVICES
 import { AuthService } from './services/auth.service';
 import { IsLoggedInService } from './services/isLoggedIn.canActivate.service';
-import { PhotoComponent } from './components/photo/photo.component';
-import { PhotoListComponent } from './components/photo-list/photo-list.component';
+
 //import { LocationService } from './services/location.service';
 
 // COMPONENTS
@@ -24,6 +23,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { LocationComponent } from './components/location/location.component';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { PhotoListComponent } from './components/photo-list/photo-list.component';
+import { WeatherTodayComponent } from './components/weather-today/weather-today.component';
+import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import { AddPhotoComponent } from './components/add-photo/add-photo.component';
     PhotoComponent,
     PhotoListComponent,
     FileSelectDirective,
-    AddPhotoComponent
+    AddPhotoComponent,
+    WeatherTodayComponent,
+    WeatherForecastComponent
   ],
   imports: [
     BrowserModule,

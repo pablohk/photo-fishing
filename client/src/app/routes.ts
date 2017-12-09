@@ -8,6 +8,8 @@ import { LocationComponent } from './components/location/location.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoListComponent } from './components/photo-list/photo-list.component';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
+import { WeatherTodayComponent } from './components/weather-today/weather-today.component';
+import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
 
 
 // SERVICES
@@ -23,6 +25,8 @@ const routes : Routes = [
   { path: 'photo/list/:id', component: PhotoListComponent },
   { path: 'photo/add/:id', component: AddPhotoComponent },
   { path: 'photo', component: PhotoComponent },
+  { path: 'weather', component: WeatherTodayComponent },
+  { path: 'weather/forecast', component: WeatherForecastComponent },
   { path: '**', redirectTo: 'login' }
 ];
 export { routes }

@@ -24,6 +24,7 @@
     "morgan": "~1.7.0",
     "multer": "^1.3.0",
     "nodemon": "^1.12.1",
+    "npm-openweathermap": "0.0.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.2",

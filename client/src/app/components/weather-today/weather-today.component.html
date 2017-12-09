@@ -1,0 +1,18 @@
+<p>weather-today works!</p>
+<p class="error" *ngIf="error">{{ error }}</p>
+<a [routerLink]="['./forecast']"> Go to Forecast</a>
+<div class="container">
+  <div class="weather">
+    <div>{{weather?.name}}</div>
+    <div>
+      <img src="//openweathermap.org/img/w/{{weather?.icon}}.png" alt="{{weather?.description}}">
+      <p>{{weather?.description}}</p>
+    </div>
+    <div>
+      <p>Min: {{weather?.temp_min}} ºc</p>
+      <p> Max: {{weather?.temp_max}} ºC</p>
+      <p>Humidity: {{weather?.humidity}}%</p>
+      <p>Wind: {{weather?.wind}} m/s</p>
+    </div>
+  </div>
+</div>

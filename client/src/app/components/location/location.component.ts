@@ -8,7 +8,7 @@ import { LocationService } from '../../services/location.service';
 import { PhotoService } from '../../services/photo.service';
 
 // MODELS
-import { Location } from '../../models/Location.model'
+import { Location } from '../../models/Location.model';
 
 @Component({
   selector: 'app-location',

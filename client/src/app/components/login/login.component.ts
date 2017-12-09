@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute , Router } from '@angular/router';
+
+// MODELS
 import { User } from '../../models/User.model';
+
+// SERVICES
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -16,11 +20,14 @@ export class LoginComponent implements OnInit {
     password:''
   }
   constructor(  private authService: AuthService,
-                private router: Router) {
-
+                private router: Router,
+                public route : ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+    this.error = params['error'];})
+
     this.user = this.authService.getUser();
     this.authService.getLoginEventEmitter()
       .subscribe( user => this.user = user );

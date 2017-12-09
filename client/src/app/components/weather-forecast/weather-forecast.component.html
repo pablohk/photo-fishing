@@ -1,0 +1,27 @@
+<p>
+  weather-forecast works!
+</p>
+<div class="container">
+  <div>
+    <select #selectElement (change)="selectLocation(selectElement.value)">
+      <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
+    </select>
+  </div>
+  <div class="forecast" *ngFor="let e of forecast">
+    <div>
+      <div>{{location?.name}}</div>
+      <div>{{e.prediction.day}} -- {{e.prediction.hour}}</div>
+      <div>
+        <img src="//openweathermap.org/img/w/{{e.daily.icon}}.png" alt="{{e.daily.description}}">
+        <p>{{e.daily.description}}</p>
+      </div>
+      <div>
+        <p>Min: {{e.daily.temp_min}} ºc</p>
+        <p> Max: {{e.daily.temp_max}} ºC</p>
+        <p>Humidity: {{e.daily.humidity}}%</p>
+        <p>Wind: {{e.daily.wind}} m/s</p>
+      </div>
+    </div>
+  </div>
+
+</div>
