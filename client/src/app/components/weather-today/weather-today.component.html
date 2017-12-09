@@ -1,7 +1,6 @@
-<p>weather-today works!</p>
-<p class="error" *ngIf="error">{{ error }}</p>
-<a [routerLink]="['./forecast']"> Go to Forecast</a>
 <div class="container">
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <a [routerLink]="['./forecast']"> Go to Forecast</a>
   <div class="weather">
     <div>{{weather?.name}}</div>
     <div>

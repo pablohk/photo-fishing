@@ -1,7 +1,5 @@
-<p>
-  weather-forecast works!
-</p>
 <div class="container">
+  <p class="error" *ngIf="error">{{ error }}</p>
   <div>
     <select #selectElement (change)="selectLocation(selectElement.value)">
       <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>

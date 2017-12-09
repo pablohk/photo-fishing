@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="error" *ngIf="error">{{ error }}</p>
   <select #selectElement (change)="selectLocation(selectElement.value)">
       <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
     </select>

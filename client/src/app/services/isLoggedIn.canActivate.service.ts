@@ -1,4 +1,4 @@
-import { CanActivate } from '@angular/router';
+import { CanActivate , ActivatedRouteSnapshot ,RouterStateSnapshot} from '@angular/router';
 import { Injectable }  from '@angular/core';
 import { Observable }  from 'rxjs/Rx';
 import { Router } from "@angular/router";
@@ -13,16 +13,24 @@ export class IsLoggedInService implements CanActivate {
   constructor(private authService:AuthService,
               private router: Router) { }
 
-  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate( next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log("Checking can activate");
-    if(this.authService.getUser()){
-      return true;
-    }else {
-      this.router.navigate(['login',{error : "Unauthorized permisson. Please Logged or "}]);
-      //alert("You are not logged");
-      return false;
+    const isAuth= this.authService.isAuthenticated();
+    if(!isAuth){
+       this.router.navigate(['login',{error : "Unauthorized permisson. Please Logged or "}]);
     }
+    return isAuth;
+  }
+    // if(this.authService.getUser()){
+    //   return true;
+    // }else {
+    //   this.router.navigate(['login',{error : "Unauthorized permisson. Please Logged or "}]);
+    //   //alert("You are not logged");
+    //   return false;
+    // }
+
     //return this.authService.getUser() ? true : false;
 
-  }
+  //}
 }

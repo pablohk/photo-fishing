@@ -22,6 +22,10 @@ export class AuthService {
      return this.userLoginEvent;
    }
 
+   public isAuthenticated() {
+     return this.user !== null && this.user !== undefined;
+   }
+
    public getUser(){ return this.user; }
 
    private emitUserLoginEvent(user){

@@ -1,5 +1,5 @@
 import { Component, OnInit ,  NgModule} from '@angular/core';
-//import { ActivatedRoute , Router} from '@angular/router';
+import { ActivatedRoute , Router} from '@angular/router';
 import { AgmMap } from '@agm/core';
 
 // SERVICES
@@ -9,6 +9,7 @@ import { PhotoService } from '../../services/photo.service';
 
 // MODELS
 import { Location } from '../../models/Location.model';
+import { User } from '../../models/User.model';
 
 @Component({
   selector: 'app-location',
@@ -26,10 +27,15 @@ export class LocationComponent implements OnInit {
   private location : Location;
   private ListLocation : Array<Location>;
   private error: String;
-
+  user: User;
 
   constructor( private authService : AuthService,
-               private locationService : LocationService) { }
+               private route: ActivatedRoute,
+               private locationService : LocationService) {
+       this.user = this.authService.getUser();
+       this.authService.getLoginEventEmitter()
+         .subscribe( user => this.user = user );
+  }
 
   ngOnInit() {
 

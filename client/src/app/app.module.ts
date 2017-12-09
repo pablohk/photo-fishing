@@ -27,6 +27,7 @@ import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoListComponent } from './components/photo-list/photo-list.component';
 import { WeatherTodayComponent } from './components/weather-today/weather-today.component';
 import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
+import { AddLocationComponent } from './components/add-location/add-location.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { WeatherForecastComponent } from './components/weather-forecast/weather-
     FileSelectDirective,
     AddPhotoComponent,
     WeatherTodayComponent,
-    WeatherForecastComponent
+    WeatherForecastComponent,
+    AddLocationComponent
   ],
   imports: [
     BrowserModule,

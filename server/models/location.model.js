@@ -6,7 +6,7 @@ const locationSchema = new Schema({
   lon: {type: Number , required: true},
   rating: {type: Number, required: true},
   name: {type: String, required: true},
-  imageURL: {type: String, required: true},
+  imageURL: {type: String },
   priv : {type: Boolean, required: true, default: true },
 },
   {

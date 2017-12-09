@@ -1,0 +1,33 @@
+<p> add-location works! </p>
+<div class="container">
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <div class="map">
+    <agm-map [latitude]="latInit" [longitude]="lonInit" [zoom]="zoom"  (mapClick)="mapClicked($event)">
+      <agm-marker [latitude]= "newLat" [longitude]= "newLon">
+      </agm-marker>
+    </agm-map>
+  </div>
+  <div>
+    <form (ngSubmit)="onSubmitLocation(locatForm)" #locatForm="ngForm" novalidate>
+      <div>
+        <label>Coordinates</label>
+        <input type="number" name="name" [(ngModel)]="location.lat" [value]="newLat" disabled>
+      <input type="number" name="name" [(ngModel)]="location.lon" [value]="newLon"  disabled>
+      </div>
+      <div>
+        <label>name</label>
+        <input type="text" name="name" [(ngModel)]="location.name" required>
+      </div>
+      <div>
+        <label>rating</label>
+        <input type="number" name="rating" [(ngModel)]="location.rating" min="0" max="10" required> [0-10]
+      </div>
+      <div>
+        <label>private</label>
+        <input type="checkbox" name="private" [(ngModel)]="location.priv" chequed>
+      </div>
+      <button type="submit" [disabled]="!locatForm.valid">Submit</button>
+    </form>
+    <p>{{location.priv}}</p>
+  </div>
+</div>

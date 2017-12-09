@@ -1,10 +1,11 @@
-<p> photo-list works!</p>
-<p class="error" *ngIf="error">{{ error }}</p>
-<div class="container" *ngFor="let e of listPhotos">
-  <div>
-    <p>{{e.title}}</p>
-    <p>{{e.description}}</p>
-    <p>{{e._location_name}}</p>
-    <img src="http://localhost:3000/{{e.imageURL}}" alt="{{e.title}}">
+<div class="container">
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <div class="container" *ngFor="let e of listPhotos">
+    <div>
+      <p>{{e.title}}</p>
+      <p>{{e.description}}</p>
+      <p>{{e._location_name}}</p>
+      <img src="http://localhost:3000/{{e.imageURL}}" alt="{{e.title}}">
+    </div>
   </div>
 </div>

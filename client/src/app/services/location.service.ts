@@ -29,6 +29,13 @@ export class LocationService {
             .catch(this.handleError);
   }
 
+  add(location):Observable<Location>{
+    console.log(location);
+    return this.http.post(`${this.baseUrl}/`,location,this.options)
+        .map(res=> res.json())
+        .catch( this.handleError);
+  }
+
   protected handleError (error :Response | any ): Observable<any> {
     console.log( error );
     return Observable.throw (error.json().message);
