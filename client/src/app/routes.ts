@@ -11,7 +11,8 @@ import { AddPhotoComponent } from './components/add-photo/add-photo.component';
 import { WeatherTodayComponent } from './components/weather-today/weather-today.component';
 import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
 import { AddLocationComponent } from './components/add-location/add-location.component';
-
+import { PruebasComponent } from './components/pruebas/pruebas.component';
+import { RemarkComponent } from './components/remark/remark.component';
 
 // SERVICES
 import { IsLoggedInService } from './services/isLoggedIn.canActivate.service';
@@ -22,13 +23,15 @@ const routes : Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'location', component: LocationComponent  },
+  { path: 'location', component: LocationComponent },
   { path: 'location/add', component: AddLocationComponent  },
   { path: 'photo/list/:id', component: PhotoListComponent  },
   { path: 'photo/add/:id', component: AddPhotoComponent },
   { path: 'photo', component: PhotoComponent  },
   { path: 'weather', component: WeatherTodayComponent  },
   { path: 'weather/forecast', component: WeatherForecastComponent },
-  { path: '**', redirectTo: 'weather' }
+  { path: 'remark', component: RemarkComponent },
+  { path: 'pruebas', component: PruebasComponent },
+  { path: '**', redirectTo: 'login' }
 ];
 export { routes }

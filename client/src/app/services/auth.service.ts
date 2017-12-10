@@ -1,8 +1,11 @@
 import { Injectable , EventEmitter} from '@angular/core';
 import { Http, RequestOptions, Headers , Response} from '@angular/http';
 import { environment } from '../../environments/environment';
-import { Observable , Subject} from 'rxjs/Rx';
-import 'rxjs';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
+//MODELS
 import { User } from '../models/User.model'
 
 
@@ -11,15 +14,19 @@ export class AuthService {
   private baseUrl = `${environment.apiUrl}/api`;
   private options ={withCredentials: true };
 
-  private user: User;
-  private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
+  user: User;
+  state: any;
+  userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private http: Http) {
       this.isLoggedIn().subscribe();
+      this.state= this.user !== undefined && this.user !== null ? true : false;
+
   }
 
   public getLoginEventEmitter():EventEmitter<any>{
      return this.userLoginEvent;
+
    }
 
    public isAuthenticated() {
@@ -31,6 +38,8 @@ export class AuthService {
    private emitUserLoginEvent(user){
      this.user = user;
      this.userLoginEvent.emit(user);
+     // console.log("dentro de emitUSerLoginEvent");
+     // console.log(this.user);
      return user;
    }
 
@@ -52,7 +61,7 @@ export class AuthService {
   logout() {
     return this.http.get(`${this.baseUrl}/logout`, this.options)
       .map(res => res.json())
-      .map(user => this.emitUserLoginEvent(null))
+      .map(user => this.emitUserLoginEvent(undefined))
       .catch(this.handleError);
   }
 
@@ -64,10 +73,16 @@ export class AuthService {
   }
 
 
+
   protected handleError (error :Response | any ): Observable<any> {
     console.log( error );
     return Observable.throw (error.json().message);
   }
 
+  handleUser(obj) {
+    this.user = obj;
+    this.userLoginEvent.emit(this.user);
+    return this.user;
+  }
 
 }

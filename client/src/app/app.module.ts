@@ -28,6 +28,8 @@ import { PhotoListComponent } from './components/photo-list/photo-list.component
 import { WeatherTodayComponent } from './components/weather-today/weather-today.component';
 import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
 import { AddLocationComponent } from './components/add-location/add-location.component';
+import { PruebasComponent } from './components/pruebas/pruebas.component';
+import { RemarkComponent } from './components/remark/remark.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { AddLocationComponent } from './components/add-location/add-location.com
     AddPhotoComponent,
     WeatherTodayComponent,
     WeatherForecastComponent,
-    AddLocationComponent
+    AddLocationComponent,
+    PruebasComponent,
+    RemarkComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +56,7 @@ import { AddLocationComponent } from './components/add-location/add-location.com
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({apiKey:environment.apiKeyMaps})
   ],
-  //providers: [AuthService, IsLoggedInService, LocationService],
-  providers:[AuthService, IsLoggedInService],
+  providers:[AuthService, IsLoggedInService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

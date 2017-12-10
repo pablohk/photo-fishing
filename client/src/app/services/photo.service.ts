@@ -39,6 +39,8 @@ export class PhotoService {
   }
 
   getByLocation(id):Observable<Array<Photo>>{
+    console.log("SERVICO PHOTO: getByLocation")
+    console.log(id)
     return this.http.get(`${this.baseUrl}/byLocation/${id}`,this.options)
             .map(res => res.json())
             .catch (this.handleError);

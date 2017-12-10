@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // SERVICES
+import { AuthService } from '../../services/auth.service';
 import { PhotoService } from '../../services/photo.service';
 import { LocationService } from '../../services/location.service';
 
 //MODELS
 import { Photo } from '../../models/Photo.model'
 import { Location } from '../../models/Location.model'
+import { User } from '../../models/User.model'
 
 
 @Component({
@@ -19,20 +21,31 @@ import { Location } from '../../models/Location.model'
 export class PhotoListComponent implements OnInit {
   private _location :String;
   private listPhotos: Array<Photo>;
-  private error: String;
 
-  constructor(private photoService : PhotoService ,
-              public locationService : LocationService,
-              public route : ActivatedRoute) {
-                this.route.params.subscribe(params => {
-                this._location = params.id;
-              }
-            );
-      }
+  error: String;
+  user: User;
+
+constructor(private authService : AuthService,
+            private photoService : PhotoService ,
+            public locationService : LocationService,
+            public route : ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+    this.error = params['error'];
+    this._location = params['id']})
+
+    this.user = this.authService.getUser();
+    this.authService.getLoginEventEmitter()
+      .subscribe( user => this.user = user );
+
     this.photoService.getByLocation(this._location).subscribe(
-      (items)=> {this.listPhotos=items},
+      (items)=> {
+        this.listPhotos=items;
+        console.log("DENTRO photo-list component: oninit")
+        console.log(this._location);
+        console.log(this.listPhotos)
+    },
       (err)=> {this.error=err.message}
 );
 

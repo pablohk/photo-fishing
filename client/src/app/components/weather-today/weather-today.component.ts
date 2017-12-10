@@ -6,6 +6,7 @@ import { WeatherService } from '../../services/weather.service';
 
 // MODELS
 import { Weather } from '../../models/Weather.model'
+import { User } from '../../models/User.model';
 
 @Component({
   selector: 'app-weather-today',
@@ -18,12 +19,17 @@ export class WeatherTodayComponent implements OnInit {
   private weather : Weather;
   latInit: Number;
   lonInit: Number;
+  user : User;
   error: String;
 
   constructor(private authService : AuthService,
               private weatherService : WeatherService) {}
 
   ngOnInit() {
+    this.authService.getLoginEventEmitter().subscribe(
+    (user) => {this.user = user;},
+    (err) => {this.error = err;});
+
     this.getCurrentPosition()
       .then ((coord:any)=>{
         this.latInit=coord.latitude;

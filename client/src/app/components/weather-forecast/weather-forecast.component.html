@@ -1,25 +1,39 @@
 <div class="container">
   <p class="error" *ngIf="error">{{ error }}</p>
-  <div>
-    <select #selectElement (change)="selectLocation(selectElement.value)">
+  <div *ngIf="user">
+    <div>
+      <select class="form-control" data-style="btn-primary" data-live-search="true" #selectElement (change)="selectLocation(selectElement.value)" style="margin-top:20px">
+      <option selected>Select one</option>
       <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
     </select>
-  </div>
-  <div class="forecast" *ngFor="let e of forecast">
-    <div>
-      <div>{{location?.name}}</div>
-      <div>{{e.prediction.day}} -- {{e.prediction.hour}}</div>
-      <div>
-        <img src="//openweathermap.org/img/w/{{e.daily.icon}}.png" alt="{{e.daily.description}}">
-        <p>{{e.daily.description}}</p>
+    </div>
+    <div class="forecast" *ngFor="let e of forecast" style="margin-top:20px">
+      <div class="row text-center" style="border: 1px solid blue; margin:10px">
+        <div class="col-xs-offset-3 col-xs-6 col-sn-offset-3 col-sm-6 col-lg-offset-3 col-lg-6">
+          {{e.prediction.day}} -- {{e.prediction.hour}}h
+        </div>
+        <div class="col-xs-offset-3 col-xs-6 col-sn-offset-3 col-sm-6 col-lg-offset-3 col-lg-6">
+          {{location?.name}}
+        </div>
+        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-lg-offset-3 col-lg-6">
+          <img style="height:10vh" src="//openweathermap.org/img/w/{{e.daily.icon}}.png" alt="{{e.daily.description}}">
+          <p>{{e.daily.description}}</p>
+        </div>
       </div>
-      <div>
-        <p>Min: {{e.daily.temp_min}} ºc</p>
-        <p> Max: {{e.daily.temp_max}} ºC</p>
-        <p>Humidity: {{e.daily.humidity}}%</p>
-        <p>Wind: {{e.daily.wind}} m/s</p>
+      <div class="row text-center" style="border: 1px solid blue; margin:10px">
+        <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6">Min: {{e.daily.temp_min}} ºc</p>
+        <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6"> Max: {{e.daily.temp_max}} ºC</p>
+      </div>
+      <div class="row text-center" style="border: 1px solid blue" style="border: 1px solid blue; margin:10px">
+        <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6">Humidity: {{e.daily.humidity}}%</p>
+        <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6">Wind: {{e.daily.wind}} m/s</p>
       </div>
     </div>
   </div>
-
+  <div *ngIf="!user">
+    <span>Private area. First
+      <a [routerLink]="['/login']">Sign In</a> or
+      <a [routerLink]="['/register']"> Sign Up</a>
+    </span>
+  </div>
 </div>

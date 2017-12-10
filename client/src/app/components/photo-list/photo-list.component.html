@@ -1,11 +1,26 @@
 <div class="container">
-  <p class="error" *ngIf="error">{{ error }}</p>
-  <div class="container" *ngFor="let e of listPhotos">
-    <div>
-      <p>{{e.title}}</p>
-      <p>{{e.description}}</p>
-      <p>{{e._location_name}}</p>
-      <img src="http://localhost:3000/{{e.imageURL}}" alt="{{e.title}}">
+  <p *ngIf="error">{{error}}</p>
+  <div *ngIf="user" class="scrollable">
+    <button class="btn btn-primary" [routerLink]="['/home']">Go Home</button>
+    <button class="btn btn-primary" [routerLink]="['/location']">Go Back</button>
+    <div class="row" *ngFor="let e of listPhotos">
+      <div class="col-xs-offset-2 col-xs-8 col-sm-12 col-md-12">
+        <h3 class="text-primary">{{e.title}}</h3>
+      </div>
+      <div class="col-xs-offset-2 col-xs-8 col-sm-12 col-md-12">
+        <img style="width:90%;" src="http://localhost:3000/{{e.imageURL}}" alt="{{e.title}}">
+      </div>
+      <div class="col-xs-offset-1 col-xs-10 col-sm-12 col-md-12 listing-title">
+          <h4>{{e._location_name}}</h4>
+          <p>{{e.description}}</p>
+      </div>
+      <hr style="min-width:85%; background-color:#a1a1a1 !important; height:1px;"/>
     </div>
+  </div>
+  <div *ngIf="!user">
+    <span>Private area. First
+    <a [routerLink]="['/login']">Sign In</a> or
+    <a [routerLink]="['/register']"> Sign Up</a>
+  </span>
   </div>
 </div>

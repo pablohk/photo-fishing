@@ -1,17 +1,29 @@
 <div class="container">
   <p class="error" *ngIf="error">{{ error }}</p>
-  <a [routerLink]="['./forecast']"> Go to Forecast</a>
-  <div class="weather">
-    <div>{{weather?.name}}</div>
-    <div>
-      <img src="//openweathermap.org/img/w/{{weather?.icon}}.png" alt="{{weather?.description}}">
-      <p>{{weather?.description}}</p>
+  <div *ngIf="user">
+    <button class="btn btn-primary" [routerLink]="['./forecast']"> Go to Forecast</button>
+    <div class="row text-center" style="border: 1px solid blue; margin:10px">
+      <div class="col-xs-offset-3 col-xs-6 col-sn-offset-3 col-sm-6 col-lg-offset-3 col-lg-6">
+        {{weather?.name}}
+      </div>
+      <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-lg-offset-3 col-lg-6">
+        <img style="height:20vh" src="//openweathermap.org/img/w/{{weather?.icon}}.png" alt="{{weather?.description}}">
+        <p>{{weather?.description}}</p>
+      </div>
     </div>
-    <div>
-      <p>Min: {{weather?.temp_min}} ºc</p>
-      <p> Max: {{weather?.temp_max}} ºC</p>
-      <p>Humidity: {{weather?.humidity}}%</p>
-      <p>Wind: {{weather?.wind}} m/s</p>
+    <div class="row text-center" style="border: 1px solid blue; margin:10px">
+      <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6">Min: {{weather?.temp_min}} ºc</p>
+      <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6"> Max: {{weather?.temp_max}} ºC</p>
     </div>
+    <div class="row text-center"style="border: 1px solid blue" style="border: 1px solid blue; margin:10px">
+      <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6">Humidity: {{weather?.humidity}}%</p>
+      <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6">Wind: {{weather?.wind}} m/s</p>
+    </div>
+  </div>
+  <div *ngIf="!user">
+    <span>Private area. First
+      <a [routerLink]="['/login']">Sign In</a> or
+      <a [routerLink]="['/register']"> Sign Up</a>
+    </span>
   </div>
 </div>

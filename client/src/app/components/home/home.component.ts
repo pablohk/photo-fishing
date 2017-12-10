@@ -15,19 +15,20 @@ export class HomeComponent implements OnInit {
   constructor(private authService : AuthService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.user = this.authService.getUser();
-    this.authService.getLoginEventEmitter()
-      .subscribe( user => this.user = user );
   }
 
   ngOnInit() {
-    this.route.params
-     .subscribe((params) =>{
-       if(params['error'] != undefined){
-        this.error = String(params['error'])
-      }
-      else this.error=null;
-      });
+
+    this.user = this.authService.getUser();
+    this.authService.getLoginEventEmitter()
+      .subscribe( user => this.user = user );
+
+    this.route.params.subscribe(params => {
+    this.error = params['error'];})
+
+    this.route.queryParams.subscribe(params => {
+    this.error = params['error'];})
+
   }
 
 }

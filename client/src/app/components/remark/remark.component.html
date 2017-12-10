@@ -1,0 +1,29 @@
+<div class="container">
+  <p *ngIf="error">{{error}}</p>
+  <div *ngIf="user" class="scrollable">
+    <a [routerLink]="['/home']">Go Home</a>
+      <div class="panel panel-default" *ngFor="let e of listRemark">
+        <div class="panel-heading PanelHeading row">
+          <div class="col-sm-6"><label>Location: {{e._location.name}}</label>
+          </div>
+          <div class="col-sm-6"></div>
+        </div>
+        <div class="panel-body PanelMainBody">
+          <div class="col-md-10 col-sm-12 col-xs-12">
+            <div class="DivLeft" title="Create Date">{{e._user.created_at | date:'dd/MM/yyyy'}}</div>
+            <div class="DivLeft" title="Author">{{e._user.username}}</div>
+            <div class="DivLeft" title="Description">
+              <strong>Description: </strong>
+              <p>{{e.contain}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div *ngIf="!user">
+    <span>Private area. First
+      <a [routerLink]="['/login']">Sign In</a> or
+      <a [routerLink]="['/register']"> Sign Up</a>
+    </span>
+  </div>
+</div>

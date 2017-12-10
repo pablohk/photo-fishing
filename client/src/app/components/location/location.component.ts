@@ -32,13 +32,13 @@ export class LocationComponent implements OnInit {
   constructor( private authService : AuthService,
                private route: ActivatedRoute,
                private locationService : LocationService) {
-       this.user = this.authService.getUser();
-       this.authService.getLoginEventEmitter()
-         .subscribe( user => this.user = user );
   }
 
   ngOnInit() {
 
+     this.authService.getLoginEventEmitter().subscribe(
+     (user) => {this.user = user;},
+     (err) => {this.error = err;});
     this.setCurrentPosition();
 
       this.locationService.getAll().subscribe(

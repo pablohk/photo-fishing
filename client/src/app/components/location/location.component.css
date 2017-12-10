@@ -1,7 +1,18 @@
 .container {
   width: 70%;
 }
-
-agm-map {
-  height: 300px;
+@media (max-width: 450px) {
+  agm-map {
+    height: 200px;
+  }
+}
+@media (min-width: 451px) and (max-width: 800px) {
+  agm-map {
+    height: 400px;
+  }
+}
+@media (min-width: 801px)  {
+  agm-map {
+    height: 600px;
+  }
 }

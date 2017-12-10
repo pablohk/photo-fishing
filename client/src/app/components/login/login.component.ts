@@ -28,6 +28,9 @@ export class LoginComponent implements OnInit {
     this.route.params.subscribe(params => {
     this.error = params['error'];})
 
+    this.route.queryParams.subscribe(params => {
+    this.error = params['error'];})
+
     this.user = this.authService.getUser();
     this.authService.getLoginEventEmitter()
       .subscribe( user => this.user = user );
