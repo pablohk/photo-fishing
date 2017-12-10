@@ -1,0 +1,9 @@
+.btn-group {
+  width: 100%;
+  margin-top:1vh;
+}
+.btn-circle.btn-lg {
+  width: 20%;
+  height: 10vh;
+  border-radius: 25px;
+}

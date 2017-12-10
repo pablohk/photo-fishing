@@ -30,6 +30,7 @@ import { WeatherForecastComponent } from './components/weather-forecast/weather-
 import { AddLocationComponent } from './components/add-location/add-location.component';
 import { PruebasComponent } from './components/pruebas/pruebas.component';
 import { RemarkComponent } from './components/remark/remark.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { RemarkComponent } from './components/remark/remark.component';
     WeatherForecastComponent,
     AddLocationComponent,
     PruebasComponent,
-    RemarkComponent
+    RemarkComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

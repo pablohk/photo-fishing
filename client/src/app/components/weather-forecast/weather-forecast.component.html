@@ -7,8 +7,8 @@
       <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
     </select>
     </div>
-    <div class="forecast" *ngFor="let e of forecast" style="margin-top:20px">
-      <div class="row text-center" style="border: 1px solid blue; margin:10px">
+    <div class="forecast" *ngFor="let e of forecast" style="border: 1px solid red; margin-top:10px">
+      <div class="row text-center" style="margin:10px">
         <div class="col-xs-offset-3 col-xs-6 col-sn-offset-3 col-sm-6 col-lg-offset-3 col-lg-6">
           {{e.prediction.day}} -- {{e.prediction.hour}}h
         </div>
