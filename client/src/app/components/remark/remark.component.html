@@ -1,7 +1,6 @@
 <div class="container">
   <p *ngIf="error">{{error}}</p>
-  <div *ngIf="user" class="scrollable">
-    <a [routerLink]="['/home']">Go Home</a>
+  <!-- <div *ngIf="user" class="scrollable"> -->
       <div class="panel panel-default" *ngFor="let e of listRemark">
         <div class="panel-heading PanelHeading row">
           <div class="col-sm-6"><label>Location: {{e._location.name}}</label>
@@ -19,11 +18,11 @@
           </div>
         </div>
       </div>
-    </div>
-  <div *ngIf="!user">
+    <!-- </div> -->
+  <!-- <div *ngIf="!user">
     <span>Private area. First
       <a [routerLink]="['/login']">Sign In</a> or
       <a [routerLink]="['/register']"> Sign Up</a>
     </span>
-  </div>
+  </div> -->
 </div>

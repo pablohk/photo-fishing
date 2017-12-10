@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  /*background-image: url('http://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/248530/d2eb47b9d6f8b2622e51deb9dfc9a57ed7c12754.jpg');*/
+  /*background-repeat:no-repeat;*/
+  background-color: #fff;
+}

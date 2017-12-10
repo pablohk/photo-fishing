@@ -1,12 +1,16 @@
 <div class="container">
   <p class="error" *ngIf="error">{{ error }}</p>
-  <div *ngIf="user">
-    <button class="btn btn-primary" [routerLink]="['/home']">Go Home</button>
-    <select class="form-control" data-style="btn-primary" data-live-search="true" #selectElement (change)="selectLocation(selectElement.value)">
-      <option selected> Select one</option>
-      <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
-    </select>
-    <div class="map">
+  <!-- <div *ngIf="user"> -->
+    <div class="row">
+      <div class ="col-xs-8">
+      <select class="form-control" data-style="btn-primary" data-live-search="true" #selectElement (change)="selectLocation(selectElement.value)">
+        <option selected disabled> Select one</option>
+        <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
+      </select>
+    </div>
+        <a class ="col-xs-4" [routerLink]="['./add']">Add new</a>
+    </div>
+    <div class="map" style="margin-top:1vh">
       <agm-map [latitude]="latInit" [longitude]="lonInit" [zoom]="zoom" (mapClick)="mapClicked($event)">
         <agm-marker [latitude]=location?.lat [longitude]=location?.lon>
           <agm-info-window>Rating {{location?.rating}}</agm-info-window>
@@ -14,7 +18,7 @@
       </agm-map>
     </div>
     <div *ngIf="location">
-      <div class="panel panel-default" style="margin-top:30px">
+      <div class="panel panel-default" style="margin-top:2vh">
         <div class="panel-heading PanelHeading row">
           <div class="col-md-10 col-sm-12 col-xs-12">
             <div class="pull-left">Created: {{location.created_at | date:'dd/MM/yyyy'}}</div>
@@ -31,17 +35,17 @@
             <p *ngIf="!location.priv"> Location public</p>
           </div>
           <div class="col-md-5 col-sm-6 col-xs-12">
-            <button class="btn btn-primary" [routerLink]="['../photo/add',location._id]">Attach Photo</button>
+            <button class="btn btn-primary attach" [routerLink]="['../photo/add',location._id]">Attach Photo</button>
             <button class="btn btn-primary" [routerLink]="['../photo/list',location._id]">View it's photos</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="!user">
+  <!-- </div> -->
+  <!-- <div *ngIf="!user">
     <span>Private area. First
     <a [routerLink]="['/login']">Sign In</a> or
     <a [routerLink]="['/register']"> Sign Up</a>
   </span>
-  </div>
+  </div> -->
 </div>

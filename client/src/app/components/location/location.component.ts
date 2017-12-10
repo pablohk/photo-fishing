@@ -26,26 +26,25 @@ export class LocationComponent implements OnInit {
 
   private location : Location;
   private ListLocation : Array<Location>;
-  private error: String;
+  error: String;
   user: User;
 
   constructor( private authService : AuthService,
                private route: ActivatedRoute,
                private locationService : LocationService) {
+                 this.authService.getLoginEventEmitter().subscribe(
+                 (user) => {this.user = user;},
+                 (err) => {this.error = err;});
+
+                  this.setCurrentPosition();
+
+                  this.locationService.getAll().subscribe(
+                    (items)=> {this.ListLocation=items},
+                    (err)=> {this.error=err.message}
+                  );
   }
 
-  ngOnInit() {
-
-     this.authService.getLoginEventEmitter().subscribe(
-     (user) => {this.user = user;},
-     (err) => {this.error = err;});
-    this.setCurrentPosition();
-
-      this.locationService.getAll().subscribe(
-        (items)=> {this.ListLocation=items},
-        (err)=> {this.error=err.message}
-      );
-    }
+  ngOnInit() {}
 
     selectLocation(id: String): void {
         this.locationService.getById(id).subscribe(

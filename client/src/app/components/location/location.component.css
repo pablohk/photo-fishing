@@ -5,6 +5,9 @@
   agm-map {
     height: 200px;
   }
+  .attach {
+    margin-bottom:1vh;
+  }
 }
 @media (min-width: 451px) and (max-width: 800px) {
   agm-map {

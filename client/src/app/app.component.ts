@@ -18,15 +18,20 @@ export class AppComponent implements OnInit , OnDestroy {
   error = String;
 
     constructor(public authService:AuthService) {
-     }
+      // this.authService.getLoginEventEmitter().subscribe(
+      // (user) => {this.user = user;},
+      // (err) => {this.error = err;});
+      //      console.log(this.user);
+    }
 
      ngOnInit(){
        this.authService.getLoginEventEmitter().subscribe(
        (user) => {this.user = user;},
        (err) => {this.error = err;});
+            console.log(this.user);
      }
 
      ngOnDestroy(){
-       this.authService.user=undefined;
+       this.authService.logout();
      }
 }
