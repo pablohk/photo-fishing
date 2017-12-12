@@ -2,6 +2,7 @@ const express  = require('express');
 const router   = express.Router();
 const loggedIn = require('../../utils/isAuthenticated');
 const Location = require('../../models/location.model');
+const Remark = require('../../models/remark.model');
 const isObjIdValid=require('../../utils/isObjIdValid');
 
 const retrieveData = (req)=>{
@@ -22,6 +23,22 @@ router.get('/',loggedIn, (req, res, next) => {
       .then( items =>{ res.status(200).json(items);})
       .catch( (err)=>{res.status(500).json(err);})
 });
+
+/*  Get my Locations */
+router.get('/myLocation',loggedIn, (req, res, next) => {
+  Remark.find({'_user':{$eq:req.user._id}})
+      .populate('_location')
+      .then(remark=>{
+        let  match=[];
+          remark.forEach(e=>{
+            match.push(e._location._id)
+          })
+          Location.find({ _id : { $in:match } })
+            .then( items =>{res.status(200).json(items);})
+            .catch( err =>{res.status(500).json(err);})
+        })
+      .catch(err =>{res.status(500).json(err);})
+    });
 
 
 /*  add new Location */

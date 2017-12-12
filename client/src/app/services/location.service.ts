@@ -23,6 +23,13 @@ export class LocationService {
             .map(res => res.json())
             .catch (this.handleError);
   }
+
+  getMyLocation():Observable<Array<Location>> {
+    return this.http.get(`${this.baseUrl}/myLocation`,this.options)
+            .map(res => res.json())
+            .catch (this.handleError);
+  }
+
   getById(id):Observable<Location>{
     return this.http.get(`${this.baseUrl}/${id}`,this.options)
             .map(res=> res.json())

@@ -32,9 +32,15 @@ export class LocationComponent implements OnInit {
                private locationService : LocationService) {
 
         this.setCurrentPosition();
-        this.locationService.getAll().subscribe(
+
+        this.locationService.getMyLocation().subscribe(
           (items)=> {this.ListLocation=items},
           (err)=> {this.error=err.message});
+
+
+        // this.locationService.getAll().subscribe(
+        //   (items)=> {this.ListLocation=items},
+        //   (err)=> {this.error=err.message});
     }
 
     ngOnInit() {}

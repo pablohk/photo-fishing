@@ -12,5 +12,5 @@ module.exports =(app)=>{
   app.use('/api/knot', knotRoutes);
   app.use('/api/photo', photoRoutes);
   app.use('/api/weather', weatherRoutes);
-    app.use('/api/user', userRoutes);
+  app.use('/api/user', userRoutes);
 };

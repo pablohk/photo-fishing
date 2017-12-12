@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <select class="form-control" data-style="btn-primary" data-live-search="true" #selectElement (change)="selectLocation(selectElement.value)">
+      <option selected disabled> Select one</option>
+      <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
+    </select>
+    </div>
+  </div>
+  <form (ngSubmit)="onSubmitRemark(remarkForm)" #remarkForm="ngForm" novalidate>
+    <div class="row" style="margin-top:2vh">
+      <textarea class="col-xs-8" style="height:20vh; margin-bottom: 2vh" type="text" name="conatin"
+              placeholder="All you think about this location...."[(ngModel)]="contain" required></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!remarkForm.valid">Submit</button>
+  </form>
+</div>

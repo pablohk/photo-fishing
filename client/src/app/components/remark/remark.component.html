@@ -1,5 +1,6 @@
 <div class="container">
   <p *ngIf="error">{{error}}</p>
+  <button [routerLink]="['./add']" class="btn btn-success">Add remark</button>
       <div class="panel panel-default" *ngFor="let e of listRemark">
         <div class="panel-heading PanelHeading row">
           <div class="col-sm-6"><label>Location: {{e._location.name}}</label>

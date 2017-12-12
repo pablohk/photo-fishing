@@ -33,6 +33,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { KnotComponent } from './components/knot/knot.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { AddRemarkComponent } from './components/add-remark/add-remark.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ChatComponent } from './components/chat/chat.component';
     NavBarComponent,
     ErrorPageComponent,
     KnotComponent,
-    ChatComponent
+    ChatComponent,
+    AddRemarkComponent
   ],
   imports: [
     BrowserModule,

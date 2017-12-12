@@ -32,9 +32,14 @@ export class PhotoComponent implements OnInit {
                 private photoService :PhotoService,
                 private userService : UserService) {
 
-       this.locationService.getAll().subscribe(
+       // this.locationService.getAll().subscribe(
+       //   (items)=> {this.ListLocation=items},
+       //   (err)=> {this.error=err.message});
+
+       this.locationService.getMyLocation().subscribe(
          (items)=> {this.ListLocation=items},
          (err)=> {this.error=err.message});
+
 
          this.userService.getAll().subscribe(
            (items)=> {

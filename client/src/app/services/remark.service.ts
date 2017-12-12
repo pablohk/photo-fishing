@@ -45,9 +45,9 @@ export class RemarkService {
             .catch(this.handleError);
   }
 
-  add(id):Observable<Remark>{
+  add(id, contain):Observable<Remark>{
     console.log(id);
-    return this.http.post(`${this.baseUrl}/${id}`,id,this.options)
+    return this.http.post(`${this.baseUrl}/${id}`,{contain} ,this.options)
         .map(res=> res.json())
         .catch( this.handleError);
   }

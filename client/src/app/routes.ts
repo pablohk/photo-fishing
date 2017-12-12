@@ -15,6 +15,7 @@ import { PruebasComponent } from './components/pruebas/pruebas.component';
 import { RemarkComponent } from './components/remark/remark.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { KnotComponent } from './components/knot/knot.component';
+import { AddRemarkComponent } from './components/add-remark/add-remark.component';
 
 // SERVICES
 import { IsLoggedInService } from './services/isLoggedIn.canActivate.service';
@@ -32,6 +33,7 @@ const routes : Routes = [
   { path: 'weather', component: WeatherTodayComponent ,canActivate: [ IsLoggedInService ]  },
   { path: 'weather/forecast', component: WeatherForecastComponent ,canActivate: [ IsLoggedInService ]},
   { path: 'remark', component: RemarkComponent ,canActivate: [ IsLoggedInService ]},
+  { path: 'remark/add', component: AddRemarkComponent ,canActivate: [ IsLoggedInService ]},
   { path: 'pruebas', component: PruebasComponent },
   { path: 'knot', component: KnotComponent },
   { path: 'errorPage', component: ErrorPageComponent },
