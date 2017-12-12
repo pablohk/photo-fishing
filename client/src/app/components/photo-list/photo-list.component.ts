@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 // SERVICES
 import { AuthService } from '../../services/auth.service';
@@ -23,7 +24,7 @@ export class PhotoListComponent implements OnInit {
 
   @Input() listPhotos: Array<Photo> ;
 
-
+  private baseUrl = `${environment.apiUrl}/`;
   error: String;
   user: User;
 

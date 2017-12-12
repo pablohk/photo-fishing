@@ -1,9 +1,14 @@
 .btn-group {
   width: 100%;
-  margin:2vh 0 1vh 1%;
+  margin-bottom: 3vh;
+  /*padding-bottom: 1vh;
+  position:fixed;
+  top:0;
+  z-index: 10;*/
+
 }
 .btn-circle.btn-lg {
-  width: 14.2%;
+  width: 14.3%;
   height: 10vh;
-  border-radius: 25px;
+  /*border-radius: 25px;*/
 }

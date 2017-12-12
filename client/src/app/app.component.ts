@@ -2,7 +2,6 @@ import { Component , OnInit , OnDestroy } from '@angular/core';
 
 //SERVICES
 import {AuthService} from './services/auth.service';
-
 //MODELS
 
 @Component({

@@ -5,13 +5,13 @@
         <div class="panel-heading">
           <span class="glyphicon glyphicon-comment"></span> Chat
         </div>
-        <div class="panel-body">
+        <div class="panel-body" #scrollMe >
           <ul class="chat">
               <li *ngFor="let m of chatService.messages" class="left clearfix">
               <div class="chat-body clearfix">
                 <div class="header">
-                  <strong *ngIf="m.userChat" class="primary-font">{{m.userChat}}</strong>
-                  <strong *ngIf="m.otherUser" class="primary-font">{{m.otherUser}}</strong>
+                  <strong *ngIf="m.userChat" class="primary-font meNick">{{m.userChat}}</strong>
+                  <strong *ngIf="m.otherUser" class="primary-font youNick">{{m.otherUser}}</strong>
                   <small class="pull-right text-muted">
                     <span class="glyphicon glyphicon-time"></span>{{m.created | date:'dd/MM/yy HH:mm'}}
                   </small>

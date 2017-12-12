@@ -2,6 +2,12 @@
   width: 90%;
   margin-top:2vh;
 }
+.meNick{
+  color: Blue;
+}
+.youNick{
+  color:green;
+}
 .chat {
   list-style: none;
   margin-top: 1vh;
@@ -27,9 +33,13 @@
   margin-right: 1vw;
 }
 
-.panel-body {
+/*.panel-body {
   overflow-y: scroll;
   height: 250px;
+}*/
+.panel-body {
+  overflow: scroll;
+  height: 60vh;
 }
 
 ::-webkit-scrollbar-track {

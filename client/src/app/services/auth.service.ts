@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 //MODELS
 import { User } from '../models/User.model'
 
+// SERVICES
 
 @Injectable()
 export class AuthService {
@@ -18,7 +19,7 @@ export class AuthService {
   state: any;
   userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private http: Http) {
+  constructor(private http: Http ) {
       this.isLoggedIn().subscribe();
       this.state= this.user !== undefined && this.user !== null ? true : false;
 

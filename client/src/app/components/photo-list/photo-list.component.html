@@ -1,16 +1,21 @@
 <div class="container">
   <p *ngIf="error">{{error}}</p>
+  <div *ngIf="listPhotos?.length>0">
     <div class="row" *ngFor="let e of listPhotos">
       <div class="col-xs-offset-2 col-xs-8 col-sm-12 col-md-12">
         <h3 class="text-primary">{{e.title}}</h3>
       </div>
       <div class="col-xs-offset-2 col-xs-8 col-sm-12 col-md-12">
-        <img style="width:90%;" src="http://localhost:3000/{{e.imageURL}}" alt="{{e.title}}">
+        <img style="width:90%;" src="{{baseUrl}}/{{e.imageURL}}" alt="{{e.title}}">
       </div>
       <div class="col-xs-offset-1 col-xs-10 col-sm-12 col-md-12 listing-title">
-          <h4>{{e._location_name}}</h4>
-          <p>{{e.description}}</p>
+        <h4>{{e._location_name}}</h4>
+        <p>{{e.description}}</p>
       </div>
-      <hr style="min-width:85%; background-color:#a1a1a1 !important; height:1px;"/>
+      <hr style="min-width:85%; background-color:#a1a1a1 !important; height:1px;" />
     </div>
+  </div>
+  <div *ngIf="listPhotos?.length===0" id="noPhoto">
+    <p> There are no photos for this location</p>
+  </div>
 </div>

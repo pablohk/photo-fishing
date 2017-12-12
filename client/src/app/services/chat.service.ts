@@ -42,7 +42,7 @@ export class ChatService {
       message: {m,usr}
     });
     this.messages.push({
-      userChat: this.authService.user.username,
+      userChat: `${this.authService.user.username}`,
       message: m,
       created:  new Date(),
       otherUser:false
