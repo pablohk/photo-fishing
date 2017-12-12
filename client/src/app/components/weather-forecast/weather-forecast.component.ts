@@ -8,7 +8,6 @@ import { LocationService } from '../../services/location.service';
 // MODELS
 import { Forecast } from '../../models/Forecast.model';
 import { Location } from '../../models/Location.model';
-import { User } from '../../models/User.model';
 
 @Component({
   selector: 'app-weather-forecast',
@@ -23,18 +22,12 @@ export class WeatherForecastComponent implements OnInit {
 
   latInit: Number;
   lonInit: Number;
-  user: User;
   error: String;
 
-  constructor(private authService : AuthService,
-              private weatherService : WeatherService,
-              private locationService : LocationService) { }
+  constructor( private weatherService : WeatherService,
+               private locationService : LocationService) { }
 
   ngOnInit() {
-    this.authService.getLoginEventEmitter().subscribe(
-    (user) => {this.user = user;},
-    (err) => {this.error = err;});
-    
     this.locationService.getAll().subscribe(
       (items)=> {this.ListLocation=items},
       (err)=> {this.error=err.message}

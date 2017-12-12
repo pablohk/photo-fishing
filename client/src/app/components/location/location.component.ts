@@ -3,13 +3,12 @@ import { ActivatedRoute , Router} from '@angular/router';
 import { AgmMap } from '@agm/core';
 
 // SERVICES
-import { AuthService } from '../../services/auth.service';
 import { LocationService } from '../../services/location.service';
 import { PhotoService } from '../../services/photo.service';
 
 // MODELS
 import { Location } from '../../models/Location.model';
-import { User } from '../../models/User.model';
+
 
 @Component({
   selector: 'app-location',
@@ -27,24 +26,18 @@ export class LocationComponent implements OnInit {
   private location : Location;
   private ListLocation : Array<Location>;
   error: String;
-  user: User;
 
-  constructor( private authService : AuthService,
-               private route: ActivatedRoute,
+
+  constructor( private route: ActivatedRoute,
                private locationService : LocationService) {
-                 this.authService.getLoginEventEmitter().subscribe(
-                 (user) => {this.user = user;},
-                 (err) => {this.error = err;});
 
-                  this.setCurrentPosition();
+        this.setCurrentPosition();
+        this.locationService.getAll().subscribe(
+          (items)=> {this.ListLocation=items},
+          (err)=> {this.error=err.message});
+    }
 
-                  this.locationService.getAll().subscribe(
-                    (items)=> {this.ListLocation=items},
-                    (err)=> {this.error=err.message}
-                  );
-  }
-
-  ngOnInit() {}
+    ngOnInit() {}
 
     selectLocation(id: String): void {
         this.locationService.getById(id).subscribe(

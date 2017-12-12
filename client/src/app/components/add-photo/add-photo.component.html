@@ -1,20 +1,16 @@
-<p>
-  add-photo works!
-</p>
-
-<form>
-  <fieldset>
-    <legend> Photo info </legend>
-    <label> Title </label>
-    <input type="text" [(ngModel)]="newPhoto.title" name="tithe" required />
-    <label> description </label>
-    <input type="text" [(ngModel)]="newPhoto.description" name="description" required />
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" /><br>
-    <label> Private </label>
-    <input type="checkbox" [(ngModel)]="newPhoto.priv" name="priv" checked>
-  </fieldset>
-  <button (click)="submit()"
-          [disabled]="!uploader.getNotUploadedItems().length"> submit </button>
-</form>
-<p>{{newPhoto.priv}}</p>
-<!-- [disabled]="!uploader.getNotUploadedItems().length" -->
+<div class="container">
+  <form>
+    <fieldset>
+      <legend> Photo info </legend>
+      <label> Title </label>
+      <input type="text" [(ngModel)]="newPhoto.title" name="tithe" required />
+      <label> description </label>
+      <input type="text" [(ngModel)]="newPhoto.description" name="description" required />
+      <input type="file" name="file" ng2FileSelect [uploader]="uploader" /><br>
+      <label> Private </label>
+      <input type="checkbox" [(ngModel)]="newPhoto.priv" name="priv" checked>
+    </fieldset>
+    <button (click)="submit()"
+            [disabled]="!uploader.getNotUploadedItems().length"> submit </button>
+  </form>
+</div>

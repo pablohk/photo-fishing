@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FileSelectDirective } from "ng2-file-upload";
 
 // CUSTOM imports
@@ -13,8 +13,7 @@ import { environment } from '../environments/environment';
 // SERVICES
 import { AuthService } from './services/auth.service';
 import { IsLoggedInService } from './services/isLoggedIn.canActivate.service';
-
-//import { LocationService } from './services/location.service';
+import { ChatService } from './services/chat.service';
 
 // COMPONENTS
 import { AppComponent } from './app.component';
@@ -31,7 +30,9 @@ import { AddLocationComponent } from './components/add-location/add-location.com
 import { PruebasComponent } from './components/pruebas/pruebas.component';
 import { RemarkComponent } from './components/remark/remark.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { KnotComponent } from './components/knot/knot.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,10 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AddLocationComponent,
     PruebasComponent,
     RemarkComponent,
-    NavBarComponent
+    NavBarComponent,
+    ErrorPageComponent,
+    KnotComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({apiKey:environment.apiKeyMaps})
   ],
-  providers:[AuthService, IsLoggedInService ],
+  providers:[AuthService, IsLoggedInService ,ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

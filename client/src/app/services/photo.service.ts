@@ -14,9 +14,6 @@ export class PhotoService {
   private baseUrl = `${environment.apiUrl}/api/photo`;
   private options ={withCredentials: true };
 
-  private user: User;
-  private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
-
   constructor(private http: Http) {
 
   }
@@ -42,6 +39,14 @@ export class PhotoService {
     console.log("SERVICO PHOTO: getByLocation")
     console.log(id)
     return this.http.get(`${this.baseUrl}/byLocation/${id}`,this.options)
+            .map(res => res.json())
+            .catch (this.handleError);
+  }
+
+  getByUser(id):Observable<Array<Photo>>{
+    console.log("SERVICO PHOTO: getByUser")
+    console.log(id)
+    return this.http.get(`${this.baseUrl}/byUser/${id}`,this.options)
             .map(res => res.json())
             .catch (this.handleError);
   }

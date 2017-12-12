@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 
 //MODELS
 import { Location } from '../../models/Location.model'
-import { User } from '../../models/User.model';
+
 
 @Component({
   selector: 'app-add-location',
@@ -26,17 +26,12 @@ export class AddLocationComponent implements OnInit {
   newLon: number;
 
   private location : Location=new Location();
-  private user: User;
   private error: String;
 
-  constructor(private authService : AuthService,
+  constructor( private authService : AuthService,
                private route: ActivatedRoute,
                private router: Router,
-               private locationService : LocationService) {
-       this.user = this.authService.getUser();
-       this.authService.getLoginEventEmitter()
-         .subscribe( user => this.user = user );
-  }
+               private locationService : LocationService) {}
 
   ngOnInit() {
     this.setCurrentPosition();
@@ -55,13 +50,13 @@ export class AddLocationComponent implements OnInit {
   onSubmitLocation(locatForm){
     this.location.lat=this.newLat;
     this.location.lon=this.newLon;
-  console.log(this.location);
-  this.locationService.add(this.location).subscribe(
-    ()=>{
-      locatForm.reset();
-      this.router.navigate(['location']);
-    },
-    (err)=> {this.error=err;}
+    console.log(this.location);
+    this.locationService.add(this.location).subscribe(
+      ()=>{
+          locatForm.reset();
+          this.router.navigate(['location']);
+          },
+      (err)=> {this.error=err;}
     );
   }
 
@@ -72,10 +67,3 @@ export class AddLocationComponent implements OnInit {
   }
 
 }
-// lat : Number;
-// lon : Number;
-// rating : Number;
-// name : String;
-// imageURL : String;
-// priv : boolean;
-// }

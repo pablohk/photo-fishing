@@ -1,6 +1,5 @@
 <div class="container">
   <p class="error" *ngIf="error">{{ error }}</p>
-  <!-- <div *ngIf="user"> -->
     <div class="row">
       <div class ="col-xs-8">
       <select class="form-control" data-style="btn-primary" data-live-search="true" #selectElement (change)="selectLocation(selectElement.value)">
@@ -41,11 +40,4 @@
         </div>
       </div>
     </div>
-  <!-- </div> -->
-  <!-- <div *ngIf="!user">
-    <span>Private area. First
-    <a [routerLink]="['/login']">Sign In</a> or
-    <a [routerLink]="['/register']"> Sign Up</a>
-  </span>
-  </div> -->
 </div>

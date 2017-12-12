@@ -1,0 +1,9 @@
+<p> You are trying to access in a inexistent page</p>
+<p *ngIf="error">Error message: {{error}}</p>
+
+<div *ngIf="this.authService.getUser();">
+    <a [routerLink]="['/home']"> Go Home</a>
+</div>
+<div *ngIf="!this.authService.getUser();">
+    <a [routerLink]="['/login']"> Go login</a>
+</div>

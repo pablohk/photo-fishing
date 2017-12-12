@@ -4,7 +4,6 @@ import { Component , OnInit , OnDestroy } from '@angular/core';
 import {AuthService} from './services/auth.service';
 
 //MODELS
-import { User } from './models/User.model';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +13,12 @@ import { User } from './models/User.model';
 
 export class AppComponent implements OnInit , OnDestroy {
   title = 'app';
-  user : User;
   error = String;
 
     constructor(public authService:AuthService) {
-      // this.authService.getLoginEventEmitter().subscribe(
-      // (user) => {this.user = user;},
-      // (err) => {this.error = err;});
-      //      console.log(this.user);
     }
 
-     ngOnInit(){
-       this.authService.getLoginEventEmitter().subscribe(
-       (user) => {this.user = user;},
-       (err) => {this.error = err;});
-            console.log(this.user);
-     }
+     ngOnInit(){}
 
      ngOnDestroy(){
        this.authService.logout();

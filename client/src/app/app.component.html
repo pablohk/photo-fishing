@@ -1,6 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-nav-bar *ngIf="user"></app-nav-bar>
-<router-outlet></router-outlet>
-<div *ngIf="!user">
-  <a [routerLink]="['login']">Loginnnnnnn</a>
-</div>
+
+<router-outlet>
+  <app-nav-bar *ngIf="this.authService.getUser()"></app-nav-bar>
+</router-outlet>

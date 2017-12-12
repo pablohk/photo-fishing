@@ -1,6 +1,5 @@
 <div class="container">
   <p *ngIf="error">{{error}}</p>
-  <!-- <div *ngIf="user" class="scrollable"> -->
     <div class="row" *ngFor="let e of listPhotos">
       <div class="col-xs-offset-2 col-xs-8 col-sm-12 col-md-12">
         <h3 class="text-primary">{{e.title}}</h3>
@@ -14,11 +13,4 @@
       </div>
       <hr style="min-width:85%; background-color:#a1a1a1 !important; height:1px;"/>
     </div>
-  <!-- </div> -->
-  <!-- <div *ngIf="!user">
-    <span>Private area. First
-    <a [routerLink]="['/login']">Sign In</a> or
-    <a [routerLink]="['/register']"> Sign Up</a>
-  </span>
-  </div> -->
 </div>

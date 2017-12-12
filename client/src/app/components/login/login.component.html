@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="!user">
+  <div *ngIf="!this.authService.getUser();">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
         <div class="panel-heading">
@@ -37,8 +37,7 @@
       </div>
     </div>
   </div>
-  <!-- <div *ngIf="user">
-  <p>You are allready Logged</p>
-  <a [routerLink]="['/home']">Go Home</a>
-</div> -->
+  <div *ngIf="this.authService.getUser();">
+    <p>You are allready Logged <a [routerLink]="['/home']">Go Home</a></p>
+  </div>
 </div>

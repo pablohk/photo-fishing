@@ -1,6 +1,5 @@
 <div class="container">
   <p class="error" *ngIf="error">{{ error }}</p>
-  <!-- <div *ngIf="user"> -->
     <div class="row text-center" style="border: 1px solid blue; margin:10px">
       <div class="col-xs-offset-3 col-xs-6 col-sn-offset-3 col-sm-6 col-lg-offset-3 col-lg-6">
         {{weather?.name}}
@@ -19,11 +18,4 @@
       <p class="col-xs-6 col-sm-6 col-lg-offest-3 col-lg-6">Wind: {{weather?.wind}} m/s</p>
     </div>
     <button class="btn btn-success col-xs-offset-3 col-xs-6" [routerLink]="['./forecast']"> Go to Forecast</button>
-  <!-- </div> -->
-  <!-- <div *ngIf="!user">
-    <span>Private area. First
-      <a [routerLink]="['/login']">Sign In</a> or
-      <a [routerLink]="['/register']"> Sign Up</a>
-    </span>
-  </div> -->
 </div>

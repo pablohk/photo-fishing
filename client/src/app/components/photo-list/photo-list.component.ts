@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // SERVICES
@@ -20,7 +20,9 @@ import { User } from '../../models/User.model'
 })
 export class PhotoListComponent implements OnInit {
   private _location :String;
-  private listPhotos: Array<Photo>;
+
+  @Input() listPhotos: Array<Photo> ;
+
 
   error: String;
   user: User;
@@ -34,10 +36,6 @@ constructor(private authService : AuthService,
     this.route.params.subscribe(params => {
     this.error = params['error'];
     this._location = params['id']})
-
-    this.user = this.authService.getUser();
-    this.authService.getLoginEventEmitter()
-      .subscribe( user => this.user = user );
 
     this.photoService.getByLocation(this._location).subscribe(
       (items)=> {

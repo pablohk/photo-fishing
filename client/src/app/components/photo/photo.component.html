@@ -1,3 +1,18 @@
-<p>
-  photo works!
-</p>
+<div class="container">
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <div class="row">
+    <div class="col-xs-6">
+      <select class="form-control" data-style="btn-primary" data-live-search="true" #selectLoc (change)="selectLocation(selectLoc.value)">
+        <option selected disabled> Select location</option>
+        <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
+      </select>
+    </div>
+    <div class="col-xs-6">
+      <select class="form-control" data-style="btn-primary" data-live-search="true" #selectUsr (change)="selectUser(selectUsr.value)">
+        <option selected disabled> Select User</option>
+        <option *ngFor="let e of ListUser" [value]="e._id">{{e.username}}</option>
+      </select>
+    </div>
+  </div>
+  <app-photo-list [listPhotos]=ListPhotos></app-photo-list>
+</div>

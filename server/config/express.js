@@ -34,6 +34,8 @@ module.exports = (app) => {
     store: new MongoStore({mongooseConnection: mongoose.connection})
   }));
 
+
+
   app.use(passport.initialize());
   app.use(passport.session());
 

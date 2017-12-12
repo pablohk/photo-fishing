@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 // SERVICES
 import { PhotoService } from '../../services/photo.service';
 import { LocationService } from '../../services/location.service';
+import { AuthService } from '../../services/auth.service';
 
 //MODELS
 import { Photo } from '../../models/Photo.model'
@@ -30,33 +31,27 @@ export class AddPhotoComponent implements OnInit {
     _location:''
   }
 
-  constructor(private photoService : PhotoService ,
+  constructor( private photoService : PhotoService ,
               public locationService : LocationService,
               public route : ActivatedRoute) {
+
         this.route.params.subscribe(params => {
-        this.newPhoto._location = params.id;
-      }
-    );
-    this.uploader=new FileUploader({
-       url: `${environment.apiUrl}/api/photo/${this.newPhoto._location}`});
+          this.newPhoto._location = params.id;});
+
+        this.uploader=new FileUploader({
+          url: `${environment.apiUrl}/api/photo/${this.newPhoto._location}`});
   }
 
   ngOnInit() { }
-
 
   submit() {
     this.addToFolder();
     console.log("----------submit method");
     console.log(this.newPhoto);
-    // this.photoService.add(this.newPhoto).subscribe(
-    //   (item)=> {this.photo=item},
-    //   (err)=> {this.error=err}
-    // );
 }
 
 
 private addToFolder():void {
-
    this.uploader.onBuildItemForm = (item, form) => {
     form.append('title', this.newPhoto.title);
     form.append('description', this.newPhoto.description);

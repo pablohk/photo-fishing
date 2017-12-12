@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  user: User;
+//
   error: String;
   formInfo={
     username:'',
@@ -17,32 +17,18 @@ export class RegisterComponent implements OnInit {
     email:''
   }
   constructor(  private authService: AuthService,
-                private router: Router) {
+                private router: Router) {}
 
-  }
-
-  ngOnInit() {
-    this.user = this.authService.getUser();
-    this.authService.getLoginEventEmitter()
-      .subscribe( user => this.user = user );
-
-  }
+  ngOnInit() {}
 
   onSubmitSign(signForm) {
     this.authService.signup(this.formInfo).subscribe(
       (user) => {
-        this.successCb(user);
+        this.error=null;
         signForm.reset();
         this.router.navigate(['home']);
       },
       (error) => { this.error = error;}
     );
   }
-
-
-  private successCb(user) {
-    this.user = user;
-    this.error = null;
-  }
-
 }

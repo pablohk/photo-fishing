@@ -12,21 +12,17 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class IsLoggedInService implements CanActivate , OnInit{
-  user:User;
   constructor(private authService : AuthService,
               private router: Router) {
-
+          this.canActivate();
      }
 
   ngOnInit() {
-    this.authService.getLoginEventEmitter()
-      .subscribe( user => this.user =  user );
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean {
-    // console.log("Checking can activate");
-    console.log(this.user);
-    if(this.user){
+  canActivate():boolean{
+
+    if( this.authService.getUser() ){
        return true;
     }else{
       this.router.navigate(['/login'],{ queryParams: {error : "Unauthorized permisson. Please Logged "}});;

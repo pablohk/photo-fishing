@@ -38,8 +38,8 @@ export class AuthService {
    private emitUserLoginEvent(user){
      this.user = user;
      this.userLoginEvent.emit(user);
-     // console.log("dentro de emitUSerLoginEvent");
-     // console.log(this.user);
+     console.log("dentro de emitUSerLoginEvent");
+     //console.log(this.user);
      return user;
    }
 
