@@ -16,14 +16,14 @@ import { Location } from '../../models/Location.model';
 })
 export class AddRemarkComponent implements OnInit {
 
-  private location : Location;
-  private ListLocation : Array<Location>;
-  contain :String;
-  error :String;
+  public location : Location;
+  public ListLocation : Array<Location>;
+  public contain :String;
+  public error :String;
 
-  constructor(private locationService : LocationService,
-              private remarkService: RemarkService,
-              private router: Router) {
+  constructor(public locationService : LocationService,
+              public remarkService: RemarkService,
+              public router: Router) {
 
             this.locationService.getAll().subscribe(
               (items)=> {this.ListLocation=items},

@@ -9,15 +9,15 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-//
-  error: String;
-  formInfo={
+
+  public error: String;
+  public formInfo={
     username:'',
     password:'',
     email:''
   }
-  constructor(  private authService: AuthService,
-                private router: Router) {}
+  constructor(  public authService: AuthService,
+                public router: Router) {}
 
   ngOnInit() {}
 

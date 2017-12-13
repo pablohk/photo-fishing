@@ -20,26 +20,21 @@ import { User } from '../../models/User.model';
 })
 export class PhotoComponent implements OnInit {
 
-  private ListLocation : Array<Location>;
-  private ListPhotos : Array<Photo>;
-  private ListUser: Array<User>;
-  error : String;
-  location : Location;;
-  private userP: User;
+  public ListLocation : Array<Location>;
+  public ListPhotos : Array<Photo>;
+  public ListUser: Array<User>;
+  public error : String;
+  public location : Location;;
+  public userP: User;
 
-  constructor(  private route: ActivatedRoute,
-               private locationService : LocationService,
-                private photoService :PhotoService,
-                private userService : UserService) {
-
-       // this.locationService.getAll().subscribe(
-       //   (items)=> {this.ListLocation=items},
-       //   (err)=> {this.error=err.message});
+  constructor(  public route: ActivatedRoute,
+                public locationService : LocationService,
+                public photoService :PhotoService,
+                public userService : UserService) {
 
        this.locationService.getMyLocation().subscribe(
          (items)=> {this.ListLocation=items},
          (err)=> {this.error=err.message});
-
 
          this.userService.getAll().subscribe(
            (items)=> {
@@ -51,7 +46,6 @@ export class PhotoComponent implements OnInit {
     ngOnInit() {}
 
     selectLocation(id: String): void {
-        //this.ListPhotos=null;
         this.locationService.getById(id).subscribe(
           (item)=>{
               this.location=item;
@@ -66,9 +60,6 @@ export class PhotoComponent implements OnInit {
       }
 
     selectUser(id: String): void {
-      //this.ListPhotos=null;
-      console.log("---- ENTRO EN selectUser de photo.component");
-      console.log(id);
       this.userService.getById(id).subscribe(
         (item)=>{
             this.userP=item;

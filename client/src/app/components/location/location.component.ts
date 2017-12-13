@@ -19,28 +19,23 @@ import { Location } from '../../models/Location.model';
 
 export class LocationComponent implements OnInit {
 
-  latInit: Number;
-  lonInit: Number;
-  zoom :number ;
+  public latInit: Number;
+  public lonInit: Number;
+  public zoom :number ;
 
-  private location : Location;
-  private ListLocation : Array<Location>;
+  public location : Location;
+  public ListLocation : Array<Location>;
   error: String;
 
 
-  constructor( private route: ActivatedRoute,
-               private locationService : LocationService) {
+  constructor( public route: ActivatedRoute,
+               public locationService : LocationService) {
 
         this.setCurrentPosition();
 
         this.locationService.getMyLocation().subscribe(
           (items)=> {this.ListLocation=items},
           (err)=> {this.error=err.message});
-
-
-        // this.locationService.getAll().subscribe(
-        //   (items)=> {this.ListLocation=items},
-        //   (err)=> {this.error=err.message});
     }
 
     ngOnInit() {}
@@ -72,7 +67,4 @@ export class LocationComponent implements OnInit {
    console.log($event.coords);
  }
 
- // photoList(id){
- //   console.log("ir listado de fotos");
- // }
 }

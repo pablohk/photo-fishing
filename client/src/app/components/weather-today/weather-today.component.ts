@@ -14,12 +14,12 @@ import { Weather } from '../../models/Weather.model'
 })
 export class WeatherTodayComponent implements OnInit {
 
-  private weather : Weather;
-  latInit: Number;
-  lonInit: Number;
-  error: String;
+  public weather : Weather;
+  public latInit: Number;
+  public lonInit: Number;
+  public error: String;
 
-  constructor( private weatherService : WeatherService) {}
+  constructor( public weatherService : WeatherService) {}
 
   ngOnInit() {
 

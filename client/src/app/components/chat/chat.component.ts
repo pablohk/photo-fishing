@@ -8,9 +8,10 @@ import { ChatService } from '../../services/chat.service';
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
 
-  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
-
-  constructor(private chatService : ChatService) { }
+  @ViewChild('scrollMe') public myScrollContainer: ElementRef;
+  public m: String;
+  
+  constructor(public chatService : ChatService) { }
 
   ngOnInit() { }
 

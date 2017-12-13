@@ -12,15 +12,15 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  error: String;
-  formInfo={
+  public error: String;
+  public formInfo={
     username:'',
     password:''
   }
-  //returnUrl:string;
-  constructor(  private authService: AuthService,
-                private router: Router,
-                private route : ActivatedRoute) { }
+
+  constructor(  public authService: AuthService,
+                public router: Router,
+                public route : ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.error = params['error'];})
 
     this.authService.logout();
-    //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   onSubmitLogin(loginForm) {

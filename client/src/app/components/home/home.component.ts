@@ -7,9 +7,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  error: String;
+  public error: String;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(public route: ActivatedRoute) {
 
       this.route.params.subscribe(params => {
       this.error = params['error'];})

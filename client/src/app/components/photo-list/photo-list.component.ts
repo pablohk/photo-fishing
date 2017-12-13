@@ -18,15 +18,15 @@ import { Location } from '../../models/Location.model'
   providers : [PhotoService, LocationService]
 })
 export class PhotoListComponent implements OnInit {
-  private _location :String;
+  public _location :String;
 
-  @Input() listPhotos: Array<Photo> ;
+  @Input() public listPhotos: Array<Photo> ;
 
-  private baseUrl = `${environment.apiUrl}/`;
-  error: String;
+  public baseUrl = `${environment.apiUrl}/`;
+  public error: String;
 
-constructor(private authService : AuthService,
-            private photoService : PhotoService ,
+constructor(public authService : AuthService,
+            public photoService : PhotoService ,
             public locationService : LocationService,
             public route : ActivatedRoute) {}
 
@@ -38,9 +38,6 @@ constructor(private authService : AuthService,
     this.photoService.getByLocation(this._location).subscribe(
       (items)=> {
         this.listPhotos=items;
-        console.log("DENTRO photo-list component: oninit")
-        console.log(this._location);
-        console.log(this.listPhotos)
     },
       (err)=> {this.error=err.message}
 );

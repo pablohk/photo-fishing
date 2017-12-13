@@ -13,4 +13,7 @@ module.exports =(app)=>{
   app.use('/api/photo', photoRoutes);
   app.use('/api/weather', weatherRoutes);
   app.use('/api/user', userRoutes);
+  app.use(function(req,res){
+    res.sendfile(__dirname+'/public/index.html');
+  })
 };

@@ -13,10 +13,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ErrorPageComponent implements OnInit {
 
-  error: String;
-  
-  constructor( private authService : AuthService,
-               private router: Router,
+  public  error: String;
+
+  constructor( public authService : AuthService,
+               public router: Router,
                public route : ActivatedRoute) {
 
         this.route.params.subscribe(params => {

@@ -14,12 +14,12 @@ import { RemarkService } from '../../services/remark.service';
   providers: [RemarkService]
 })
 export class RemarkComponent implements OnInit {
-  private remark: Remark;
-  private listRemark: Array<Remark>;
-  error : String;
+  public remark: Remark;
+  public listRemark: Array<Remark>;
+  public error : String;
 
   constructor( public route : ActivatedRoute,
-              private remarkService : RemarkService) { }
+               public remarkService : RemarkService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -36,7 +36,4 @@ export class RemarkComponent implements OnInit {
     );
   }
 
-  getAll(){
-
-  }
 }

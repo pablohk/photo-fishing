@@ -21,8 +21,8 @@ import { Location } from '../../models/Location.model'
 })
 export class AddPhotoComponent implements OnInit {
 
-  private error: String;
-  private  uploader: FileUploader;
+  public error: String;
+  public  uploader: FileUploader;
 
   newPhoto ={
     title: '',
@@ -31,10 +31,10 @@ export class AddPhotoComponent implements OnInit {
     _location:''
   }
 
-  constructor( private photoService : PhotoService ,
-              public locationService : LocationService,
-              public route : ActivatedRoute,
-              public router : Router) {
+  constructor( public photoService : PhotoService ,
+               public locationService : LocationService,
+               public route : ActivatedRoute,
+               public router : Router) {
 
         this.route.params.subscribe(params => {
           this.newPhoto._location = params.id;});

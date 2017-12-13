@@ -25,13 +25,13 @@ export class AddLocationComponent implements OnInit {
   newLat: number;
   newLon: number;
 
-  private location : Location=new Location();
-  private error: String;
+  public location : Location=new Location();
+  public error: String;
 
-  constructor( private authService : AuthService,
-               private route: ActivatedRoute,
-               private router: Router,
-               private locationService : LocationService) {}
+  constructor( public authService : AuthService,
+               public route: ActivatedRoute,
+               public router: Router,
+               public locationService : LocationService) {}
 
   ngOnInit() {
     this.setCurrentPosition();

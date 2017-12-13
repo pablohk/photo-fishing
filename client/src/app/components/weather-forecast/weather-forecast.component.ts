@@ -16,16 +16,16 @@ import { Location } from '../../models/Location.model';
   providers: [ WeatherService , LocationService ]
 })
 export class WeatherForecastComponent implements OnInit {
-  private forecast : Array<Forecast>;
-  private ListLocation : Array<Location>;
-  private location : Location;
+  public forecast : Array<Forecast>;
+  public ListLocation : Array<Location>;
+  public location : Location;
 
-  latInit: Number;
-  lonInit: Number;
-  error: String;
+  public latInit: Number;
+  public lonInit: Number;
+  public error: String;
 
-  constructor( private weatherService : WeatherService,
-               private locationService : LocationService) { }
+  constructor( public weatherService : WeatherService,
+               public locationService : LocationService) { }
 
   ngOnInit() {
     this.locationService.getAll().subscribe(
