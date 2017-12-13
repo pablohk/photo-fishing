@@ -1,4 +1,4 @@
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate,ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable , OnInit }  from '@angular/core';
 import { Observable }  from 'rxjs/Rx';
 import { ActivatedRoute, Router } from "@angular/router";
@@ -15,7 +15,7 @@ export class IsLoggedInService implements CanActivate , OnInit{
 
   constructor(private authService : AuthService,
               private router: Router) {
-              this.canActivate();
+              //this.canActivate();
             }
 
   ngOnInit() {}
@@ -27,5 +27,7 @@ export class IsLoggedInService implements CanActivate , OnInit{
       this.router.navigate(['/login'],{ queryParams: {error : "Unauthorized permisson. Please Logged "}});
       return false;}
   }
+
+
 
 }
