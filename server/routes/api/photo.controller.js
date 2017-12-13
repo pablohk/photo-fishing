@@ -47,7 +47,8 @@ console.log(req.body);
     _location : req.params.locationId,
     title: req.body.title,
     description : req.body.description,
-    imageURL : `uploads/${req.file.filename}`,
+    imageURL : `${req.file.url}`,
+    //imageURL : `uploads/${req.file.filename}`,
     priv : req.body.priv });
 
     console.log(newObj);

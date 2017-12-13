@@ -1,6 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { FileUploader } from "ng2-file-upload";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 
@@ -33,7 +33,8 @@ export class AddPhotoComponent implements OnInit {
 
   constructor( private photoService : PhotoService ,
               public locationService : LocationService,
-              public route : ActivatedRoute) {
+              public route : ActivatedRoute,
+              public router : Router) {
 
         this.route.params.subscribe(params => {
           this.newPhoto._location = params.id;});
@@ -48,6 +49,7 @@ export class AddPhotoComponent implements OnInit {
     this.addToFolder();
     console.log("----------submit method");
     console.log(this.newPhoto);
+    this.router.navigate(['photo']);
 }
 
 
