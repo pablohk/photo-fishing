@@ -17,18 +17,22 @@ export class LoginComponent implements OnInit {
     username:'',
     password:''
   }
+  //returnUrl:string;
   constructor(  private authService: AuthService,
                 private router: Router,
-                public route : ActivatedRoute) {
+                private route : ActivatedRoute) { }
 
-      this.route.params.subscribe(params => {
-      this.error = params['error'];})
+  ngOnInit() {
 
-      this.route.queryParams.subscribe(params => {
-      this.error = params['error'];})
+    this.route.params.subscribe(params => {
+    this.error = params['error'];})
+
+    this.route.queryParams.subscribe(params => {
+    this.error = params['error'];})
+
+    this.authService.logout();
+    //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-
-  ngOnInit() {}
 
   onSubmitLogin(loginForm) {
     this.authService.login(this.formInfo).subscribe(

@@ -5,7 +5,7 @@ import { Observable , Subject} from 'rxjs/Rx';
 import 'rxjs';
 
 // MODELS
-import { User } from '../models/User.model';
+// import { User } from '../models/User.model';
 import { Weather } from '../models/Weather.model';
 import { Forecast } from '../models/Forecast.model';
 
@@ -14,8 +14,8 @@ export class WeatherService {
   private baseUrl = `${environment.apiUrl}/api/weather`;
   private options ={withCredentials: true };
 
-  private user: User;
-  private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
+  // private user: User;
+  // private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
   private today: Weather;
   private forecast :Array<Weather>;
 

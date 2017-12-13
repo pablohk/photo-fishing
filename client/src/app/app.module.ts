@@ -64,7 +64,7 @@ import { AddRemarkComponent } from './components/add-remark/add-remark.component
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({apiKey:environment.apiKeyMaps})
   ],
-  providers:[AuthService, IsLoggedInService ,ChatService],
+  providers:[AuthService, IsLoggedInService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

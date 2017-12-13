@@ -5,7 +5,7 @@ import { Observable , Subject} from 'rxjs/Rx';
 import 'rxjs';
 
 //MODELS
-import { User } from '../models/User.model'
+// import { User } from '../models/User.model'
 import { Location } from '../models/Location.model'
 import { Remark } from '../models/Remark.model'
 
@@ -14,8 +14,8 @@ export class RemarkService {
   private baseUrl = `${environment.apiUrl}/api/remark`;
   private options ={withCredentials: true };
 
-  private user: User;
-  private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
+  // private user: User;
+  // private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private http: Http) {
 

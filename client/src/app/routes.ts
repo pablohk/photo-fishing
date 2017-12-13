@@ -35,7 +35,7 @@ const routes : Routes = [
   { path: 'remark', component: RemarkComponent ,canActivate: [ IsLoggedInService ]},
   { path: 'remark/add', component: AddRemarkComponent ,canActivate: [ IsLoggedInService ]},
   { path: 'pruebas', component: PruebasComponent },
-  { path: 'knot', component: KnotComponent },
+  { path: 'knot', component: KnotComponent ,canActivate: [ IsLoggedInService ]},
   { path: 'errorPage', component: ErrorPageComponent },
   { path: '**', redirectTo: 'errorPage' }
 ];

@@ -5,7 +5,7 @@ import { Observable , Subject} from 'rxjs/Rx';
 import 'rxjs';
 
 //MODELS
-import { User } from '../models/User.model'
+// import { User } from '../models/User.model'
 import { Photo } from '../models/Photo.model'
 
 @Injectable()

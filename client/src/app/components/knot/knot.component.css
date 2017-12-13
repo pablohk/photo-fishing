@@ -1,0 +1,20 @@
+.knot{
+  width: 90%;
+  margin-left: 5%;
+}
+
+ .knot div {
+   font-size: 2vw;
+   display:inline-block;
+   margin-bottom: 3vh;
+   text-align: justify;
+  }
+
+.knot img {
+  width: 60%;
+  margin-left: 10%;
+}
+
+.title{
+  color:red;
+}

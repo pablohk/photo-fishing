@@ -3,7 +3,7 @@ import { Http, RequestOptions, Headers , Response} from '@angular/http';
 import { environment } from '../../environments/environment';
 import { Observable , Subject} from 'rxjs/Rx';
 import 'rxjs';
-import { User } from '../models/User.model'
+// import { User } from '../models/User.model'
 import { Location } from '../models/Location.model'
 
 @Injectable()
@@ -11,8 +11,8 @@ export class LocationService {
   private baseUrl = `${environment.apiUrl}/api/location`;
   private options ={withCredentials: true };
 
-  private user: User;
-  private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
+  // private user: User;
+  // private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private http: Http) {
 

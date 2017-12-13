@@ -10,8 +10,6 @@ import { LocationService } from '../../services/location.service';
 //MODELS
 import { Photo } from '../../models/Photo.model'
 import { Location } from '../../models/Location.model'
-import { User } from '../../models/User.model'
-
 
 @Component({
   selector: 'app-photo-list',
@@ -26,7 +24,6 @@ export class PhotoListComponent implements OnInit {
 
   private baseUrl = `${environment.apiUrl}/`;
   error: String;
-  user: User;
 
 constructor(private authService : AuthService,
             private photoService : PhotoService ,
