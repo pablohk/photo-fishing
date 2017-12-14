@@ -14,7 +14,6 @@ module.exports =(app)=>{
   app.use('/api/weather', weatherRoutes);
   app.use('/api/user', userRoutes);
   app.use(function(req,res){
-    console.log("dentro de sendfile");
     res.sendfile('public/index.html');
   })
 };

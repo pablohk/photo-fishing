@@ -9,7 +9,7 @@ const storage = cloudinaryStorage({
   folder: '',
   allowedFormats: ['jpg', 'png'],
   filename: function (req, file, cb) {
-    cb(undefined, `${Date.now()}__${file}`);
+    cb(undefined, `${Date.now()}__${file.originalname}`);
   }
 });
 
