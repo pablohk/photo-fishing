@@ -1,3 +1,28 @@
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+const express = require('express');
+const multer = require('multer');
+const app = express();
+
+const storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: '',
+  allowedFormats: ['jpg', 'png'],
+  filename: function (req, file, cb) {
+    cb(undefined, `${Date.now()}__${file}`);
+  }
+});
+
+const parser = multer({ storage: storage });
+
+app.post('/upload', parser.array('images', 10), function (req, res) {
+  console.log(req.files);
+});
+
+const upload   = multer({ storage });
+module.exports = upload;
+
+// ----- MULTER modo local (carpeta local upload)
 // const multer = require('multer');
 // const path = require('path');
 //
@@ -14,27 +39,3 @@
 //
 // const upload   = multer({ storage });
 // module.exports = upload;
-
-const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
-const express = require('express');
-const multer = require('multer');
-const app = express();
-
-const storage = cloudinaryStorage({
-  cloudinary: cloudinary,
-  folder: '',
-  allowedFormats: ['jpg', 'png'],
-  filename: function (req, file, cb) {
-    cb(undefined, 'my-file-name');
-  }
-});
-
-const parser = multer({ storage: storage });
-
-app.post('/upload', parser.array('images', 10), function (req, res) {
-  console.log(req.files);
-});
-
-const upload   = multer({ storage });
-module.exports = upload;

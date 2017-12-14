@@ -1,12 +1,11 @@
 .btn-group {
   width: 100%;
-  /*margin-bottom: 3vh;*/
-  /*padding-bottom: 1vh;*/
   position:fixed;
   top:0;
   z-index: 10;
-
+    background-color: #3478b7;
 }
+
 .btn-circle.btn-lg {
   width: 14.3%;
   height: 10vh;
