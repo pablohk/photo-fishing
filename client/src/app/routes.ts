@@ -28,7 +28,7 @@ const routes : Routes = [
   { path: 'location', component: LocationComponent , canActivate : [ IsLoggedInService ]},
   { path: 'location/add', component: AddLocationComponent , canActivate : [ IsLoggedInService ] },
   { path: 'photo/list/:id', component: PhotoListComponent , canActivate : [ IsLoggedInService ] },
-  { path: 'photo/add/:id', component: AddPhotoComponent , canActivate : [ IsLoggedInService ] },
+  { path: 'photo/add/:id', component: AddPhotoComponent },
   { path: 'photo', component: PhotoComponent , canActivate : [ IsLoggedInService ] },
   { path: 'weather', component: WeatherTodayComponent , canActivate : [ IsLoggedInService ]  },
   { path: 'weather/forecast', component: WeatherForecastComponent , canActivate : [ IsLoggedInService ]},
