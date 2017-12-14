@@ -45,19 +45,20 @@ export class AddPhotoComponent implements OnInit {
 
   ngOnInit() { }
 
-  submit() {
-    this.addToFolder();
-    this.router.navigate(['photo']);
-}
+//   submit() {
+//     //this.addToFolder();
+//     this.router.navigate(['photo']);
+// }
 
 
-private addToFolder():void {
-   this.uploader.onBuildItemForm = (item, form) => {
+public addToFolder():void {
+  this.uploader.onBuildItemForm = (item, form) => {
     form.append('title', this.newPhoto.title);
     form.append('description', this.newPhoto.description);
     form.append('priv', this.newPhoto.priv);
   };
   this.uploader.uploadAll();
 }
+
 
 }

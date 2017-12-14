@@ -1,16 +1,64 @@
 <div class="container">
   <form role="form" #formAdd="ngForm">
-    <fieldset>
+    <fieldset  class="row">
       <legend> Photo info </legend>
-      <label> Title </label>
-      <input type="text" [(ngModel)]="newPhoto.title" name="tithe" required />
-      <label> description </label>
-      <input type="text" [(ngModel)]="newPhoto.description" name="description" required />
-      <input type="file" name="file" ng2FileSelect [uploader]="uploader"/><br>
-      <label> Private </label>
-      <input type="checkbox" [(ngModel)]="newPhoto.priv" name="priv" checked>
+      <div class="col-xs-10">
+        <input style="margin-bottom:1vh" type="text" [(ngModel)]="newPhoto.title" name="title" placeholder="Title" required />
+        <input type="text" [(ngModel)]="newPhoto.description" name="description" placeholder="Description" required />
+        <label> Private </label>
+        <input type="checkbox" [(ngModel)]="newPhoto.priv" name="priv" checked>
+      </div>
     </fieldset>
-    <button class="btn btn-success" (click)="submit()"
-            [disabled]="!formAdd.valid &&  !this.uploader.onCompleteAll.length.valueOf()>0"> submit </button>
   </form>
+
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <h3>Select file</h3>
+      <input type="file" ng2FileSelect [uploader]="uploader" />
+    </div>
+
+    <div class="col-md-9" style="margin-bottom: 40px">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="50%">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td><strong>{{ uploader.queue[0]?.file?.name }}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <div>
+          progress:
+          <div class="progress" style="">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-success btn-s" (click)="addToFolder()" [disabled]="!formAdd.valid || !uploader.getNotUploadedItems().length">
+                      <span class="glyphicon glyphicon-upload"></span> Upload
+                  </button>
+
+        <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                  </button>
+        <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                      <span class="glyphicon glyphicon-trash"></span> Remove
+                  </button>
+      </div>
+
+    </div>
+
+  </div>
+  <button  type="button" class="btn btn-primary " [routerLink]="['/photo']"
+    [style.display]="uploader.progress!=100 ? 'none': 'inherit'">
+
+                <span class="glyphicon glyphicon-upload"></span> Ok
+            </button>
+
 </div>
