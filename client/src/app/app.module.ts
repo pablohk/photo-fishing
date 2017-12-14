@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-//import { FileSelectDirective } from "ng2-file-upload";
 import { FileUploadModule } from "ng2-file-upload";
 
 
@@ -46,7 +45,6 @@ import { AddRemarkComponent } from './components/add-remark/add-remark.component
     LocationComponent,
     PhotoComponent,
     PhotoListComponent,
-    //FileSelectDirective,
     AddPhotoComponent,
     WeatherTodayComponent,
     WeatherForecastComponent,

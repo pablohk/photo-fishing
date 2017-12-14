@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="this.authService.getUser();">
-    <p>You are allready Logged <a [routerLink]="['/home']">Go Home</a></p>
+  <div *ngIf="this.authService.getUser();"> {{router.navigate(['/home'])}}
+    <!-- <p>You are allready Logged <a [routerLink]="['/home']">Go Home</a></p> -->
   </div>
 </div>

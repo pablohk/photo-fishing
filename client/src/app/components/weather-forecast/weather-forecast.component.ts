@@ -28,7 +28,7 @@ export class WeatherForecastComponent implements OnInit {
                public locationService : LocationService) { }
 
   ngOnInit() {
-    this.locationService.getAll().subscribe(
+    this.locationService.getMyLocation().subscribe(
       (items)=> {this.ListLocation=items},
       (err)=> {this.error=err.message}
     );

@@ -47,8 +47,6 @@ export class AddPhotoComponent implements OnInit {
 
   submit() {
     this.addToFolder();
-    console.log("----------submit method");
-    console.log(this.newPhoto);
     this.router.navigate(['photo']);
 }
 
