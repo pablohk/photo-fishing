@@ -9,7 +9,7 @@
   </div>
   <form (ngSubmit)="onSubmitRemark(remarkForm)" #remarkForm="ngForm" novalidate>
     <div class="row" style="margin-top:2vh">
-      <textarea class="col-xs-8" style="height:20vh; margin-bottom: 2vh" type="text" name="conatin"
+      <textarea class="col-xs-8" style="height:20vh; margin:0 0 2vh 4vw" type="text" name="conatin"
               placeholder="All you think about this location...."[(ngModel)]="contain" required></textarea>
     </div>
     <button class="btn btn-primary" type="submit" [disabled]="!remarkForm.valid">Submit</button>

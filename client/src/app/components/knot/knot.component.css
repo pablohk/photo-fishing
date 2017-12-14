@@ -4,9 +4,9 @@
 }
 
  .knot div {
-   font-size: 2vw;
+   font-size: 3.5vw;
    display:inline-block;
-   margin-bottom: 3vh;
+   margin-bottom: 2vh;
    text-align: justify;
   }
 
@@ -14,7 +14,6 @@
   width: 60%;
   margin-left: 10%;
 }
-
 .title{
   color:red;
 }

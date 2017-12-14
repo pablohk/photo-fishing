@@ -9,6 +9,7 @@ import { LocationService } from '../../services/location.service';
 import { Forecast } from '../../models/Forecast.model';
 import { Location } from '../../models/Location.model';
 
+
 @Component({
   selector: 'app-weather-forecast',
   templateUrl: './weather-forecast.component.html',
@@ -52,7 +53,9 @@ export class WeatherForecastComponent implements OnInit {
               this.lonInit=item.lon;
               this.getForecast();
             },
-          (err)=> {this.error=err}
+          (err)=> {
+
+            this.error=err}
         );
     }
 private getForecast (){
