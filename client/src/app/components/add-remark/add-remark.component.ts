@@ -25,7 +25,7 @@ export class AddRemarkComponent implements OnInit {
               public remarkService: RemarkService,
               public router: Router) {
 
-            this.locationService.getMyLocation().subscribe(
+            this.locationService.getAll().subscribe(
               (items)=> {this.ListLocation=items},
               (err)=> {this.error=err.message});
   }
