@@ -1,6 +1,6 @@
 #!bin/bash
-rm -rv client/dist
-rm -rv server/public
+rm -rv client/dist/*
+rm -rv server/public/*
 cd client
 ng build --prod --aot=false
 cd ..
