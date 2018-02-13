@@ -1,45 +1,37 @@
 <div class="container">
   <p class="error" *ngIf="error">{{ error }}</p>
-    <div class="row">
-      <div class ="col-xs-8">
+  <div class="row">
+    <div class="col-xs-8 col-sm-10">
       <select class="form-control" data-style="btn-primary" data-live-search="true" #selectElement (change)="selectLocation(selectElement.value)">
         <option selected disabled> Select one</option>
         <option *ngFor="let e of ListLocation" [value]="e._id">{{e.name}}</option>
       </select>
     </div>
-        <a class ="col-xs-4" [routerLink]="['./add']">Add new</a>
-    </div>
-    <div class="map" style="margin-top:1vh">
-      <agm-map [latitude]="latInit" [longitude]="lonInit" [zoom]="zoom" (mapClick)="mapClicked($event)">
-        <agm-marker [latitude]=location?.lat [longitude]=location?.lon>
-          <agm-info-window>Rating {{location?.rating}}</agm-info-window>
-        </agm-marker>
-      </agm-map>
-    </div>
-    <div *ngIf="location">
-      <div class="panel panel-default" style="margin-top:2vh">
-        <div class="panel-heading PanelHeading row">
-          <div class="col-md-10 col-sm-12 col-xs-12">
-            <div class="pull-left">Created: {{location.created_at | date:'dd/MM/yyyy'}}</div>
-            <div class="pull-right">Rating: {{location.rating}}</div>
-          </div>
-
-        </div>
-        <div class="panel-body PanelMainBody row">
-          <div class="col-md-5 col-sm-6 col-xs-12">
-            <strong>{{location.name}}</strong>
-          </div>
-          <div class="col-md-5 col-sm-6 col-xs-12">
-            <p *ngIf="location.priv"> Location private</p>
-            <p *ngIf="!location.priv"> Location public</p>
-          </div>
-          <div class="row">
-            <button class="col-xs-offset-1 col-xs-4 col-sm-offset-1 col-sm-4 col-md-offset-2 col-md-3
-                           btn btn-success" [routerLink]="['../photo/add',location._id]">Attach Photo</button>
-            <!-- <button class="col-xs-offset-1 col-xs-4 col-sm-offset-1 col-sm-4 col-md-offset-2 col-md-3
-                           btn btn-success" [routerLink]="['../photo/list',location._id]">View it's photos</button> -->
-          </div>
-        </div>
+    <a class="col-xs-4 col-sm-2" [routerLink]="['./add']">Add new</a>
+  </div>
+  <div class="map">
+    <agm-map [latitude]="latInit" [longitude]="lonInit" [zoom]="zoom" [streetViewControl]="false">
+      <agm-marker [latitude]=location?.lat [longitude]=location?.lon>
+        <agm-info-window>Rating {{location?.rating}}</agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+  <div *ngIf="location" class="panel panel-default">
+    <div class="panel-heading row">
+      <div class="col-md-10 col-sm-12 col-xs-12">
+        <div class="pull-left">Created: {{location.created_at | date:'dd/MM/yyyy'}}</div>
+        <div class="pull-right">Rating: {{location.rating}}</div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <strong>{{location.name}}</strong>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <p *ngIf="location.priv"> Location private</p>
+        <p *ngIf="!location.priv"> Location public</p>
+      </div>
+    </div>
+    <button class="btn btn-success" [routerLink]="['../photo/add',location._id]">Add Photo</button>
+  </div>
 </div>

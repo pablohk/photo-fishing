@@ -1,0 +1,12 @@
+#signupbox{
+margin-top:50px;
+}
+.right-pos{
+  float:right;
+  font-size: 85%;
+  position: relative;
+  top:-10px;
+}
+.error{
+  color:red;
+}

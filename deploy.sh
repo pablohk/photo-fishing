@@ -11,5 +11,3 @@ git status
 git commit -m"Prepare to build"
 git push origin master
 git subtree push --prefix=server heroku master
-
-

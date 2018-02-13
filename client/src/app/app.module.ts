@@ -35,6 +35,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { KnotComponent } from './components/knot/knot.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { AddRemarkComponent } from './components/add-remark/add-remark.component';
+import { FilterRemarkPipe } from './pipes/filter-remark.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AddRemarkComponent } from './components/add-remark/add-remark.component
     ErrorPageComponent,
     KnotComponent,
     ChatComponent,
-    AddRemarkComponent
+    AddRemarkComponent,
+    FilterRemarkPipe
   ],
   imports: [
     BrowserModule,

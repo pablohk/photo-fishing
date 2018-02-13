@@ -29,9 +29,7 @@ export class RemarkComponent implements OnInit {
     this.error = params['error'];})
 
     this.remarkService.getMyRemark().subscribe(
-      (items)=>{this.listRemark = items;
-        console.log(this.listRemark)
-      },
+      (items)=>{this.listRemark = items;},
       (err)=>{this.error=err}
     );
   }

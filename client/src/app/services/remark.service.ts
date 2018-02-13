@@ -14,9 +14,6 @@ export class RemarkService {
   private baseUrl = `${environment.apiUrl}/api/remark`;
   private options ={withCredentials: true };
 
-  // private user: User;
-  // private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
-
   constructor(private http: Http) {
 
   }

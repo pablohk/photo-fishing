@@ -1,6 +1,15 @@
 .container {
   width: 90%;
 }
+.top-spacing{
+  margin-top:1vh;
+}
+.left-position{
+  margin-left:5vh;
+}
+.row {
+  margin-top:2vh;
+}
 @media (max-width: 450px) {
   agm-map {
     height: 200px;

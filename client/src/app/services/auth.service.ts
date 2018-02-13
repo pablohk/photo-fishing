@@ -36,7 +36,6 @@ export class AuthService {
    private emitUserLoginEvent(user){
      this.user = user;
      this.userLoginEvent.emit(this.user);
-     console.log("dentro de emitUSerLoginEvent");
      return user;
    }
 
@@ -72,7 +71,6 @@ export class AuthService {
 
 
   protected handleError (error :Response | any ): Observable<any> {
-    console.log( error );
     return Observable.throw (error.json().message);
   }
 

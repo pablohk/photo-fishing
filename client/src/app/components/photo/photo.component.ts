@@ -49,7 +49,6 @@ export class PhotoComponent implements OnInit {
         this.locationService.getById(id).subscribe(
           (item)=>{
               this.location=item;
-              console.log(item)
               this.photoService.getByLocation(item._id).subscribe(
                 (items)=>{this.ListPhotos= items;},
                 (err)=>{this.error =err;}

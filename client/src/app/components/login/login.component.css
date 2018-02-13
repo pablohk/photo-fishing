@@ -1,0 +1,28 @@
+#loginbox {
+  margin-top: 50px;
+}
+
+.panel-body {
+  padding-top: 30px;
+}
+
+#login-alert {
+  display: none;
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+.horizontal-line {
+  border-top: 1px solid#888;
+  padding-top: 15px;
+  font-size: 85%;
+}
+.error{
+  color:#FF0000;
+}

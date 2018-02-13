@@ -36,24 +36,18 @@ export class PhotoService {
   }
 
   getByLocation(id):Observable<Array<Photo>>{
-    console.log("SERVICO PHOTO: getByLocation")
-    console.log(id)
     return this.http.get(`${this.baseUrl}/byLocation/${id}`,this.options)
             .map(res => res.json())
             .catch (this.handleError);
   }
 
   getByUser(id):Observable<Array<Photo>>{
-    console.log("SERVICO PHOTO: getByUser")
-    console.log(id)
     return this.http.get(`${this.baseUrl}/byUser/${id}`,this.options)
             .map(res => res.json())
             .catch (this.handleError);
   }
 
   add(photo):Observable<Photo>{
-    console.log("---- En el servicio photo: add");
-    console.log(photo);
     return this.http.post(`${this.baseUrl}/${photo._location}`, photo, this.options)
           .map(res=> res.json())
           .catch(this.handleError);
@@ -64,7 +58,6 @@ export class PhotoService {
 }
 
   protected handleError (error :Response | any ): Observable<any> {
-    console.log( error );
     return Observable.throw (error.json().message);
   }
 

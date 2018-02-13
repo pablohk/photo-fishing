@@ -1,21 +1,20 @@
 <div class="container">
   <p *ngIf="error">{{error}}</p>
-  <button [routerLink]="['./add']" class="btn btn-success">Add remark</button>
-      <div class="panel panel-default" *ngFor="let e of listRemark">
-        <div class="panel-heading PanelHeading row">
-          <div class="col-sm-6"><label>Location: {{e._location.name}}</label>
-          </div>
-          <div class="col-sm-6"></div>
-        </div>
-        <div class="panel-body PanelMainBody">
-          <div class="col-md-10 col-sm-12 col-xs-12">
-            <div class="DivLeft" title="Create Date">{{e._user.created_at | date:'dd/MM/yyyy'}}</div>
-            <div class="DivLeft" title="Author">{{e._user.username}}</div>
-            <div class="DivLeft" title="Description">
-              <strong>Description: </strong>
-              <p>{{e.contain}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="filter">
+    <input type="text" placeholder="Filter by location" [(ngModel)]="pattern">
+    <button [routerLink]="['./add']" class="btn btn-success pull-right">Add remark</button>
+  </div>
+  <div class="panel panel-default" *ngFor="let e of listRemark | filterRemark:pattern">
+    <div class="panel-heading">
+      <label>Location: {{e._location.name}}</label>
+    </div>
+    <div class="panel-body">
+      <div class="pull-left">{{e._user.created_at | date:'dd/MM/yyyy'}}</div>
+      <div class="pull-right">{{e._user.username}}</div>
+    </div>
+    <div class="description">
+      <strong>Description: </strong>
+      <p>{{e.contain}}</p>
+    </div>
+  </div>
 </div>

@@ -28,7 +28,10 @@ export class RegisterComponent implements OnInit {
         signForm.reset();
         this.router.navigate(['home']);
       },
-      (error) => { this.error = error;}
+      (error) => {
+         this.error = error;
+         setTimeout(()=>{this.error=null},2000)
+       }
     );
   }
 }

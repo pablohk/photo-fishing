@@ -1,9 +1,9 @@
 <div class="container">
   <form role="form" #formAdd="ngForm">
-    <fieldset  class="row">
-      <legend> Photo info </legend>
-      <div class="col-xs-10">
-        <input style="margin-bottom:1vh" type="text" [(ngModel)]="newPhoto.title" name="title" placeholder="Title" required />
+    <fieldset class="row">
+      <legend>Photo info </legend>
+      <div class="col-xs-12">
+        <input class="title" type="text" [(ngModel)]="newPhoto.title" name="title" placeholder="Title" required />
         <input type="text" [(ngModel)]="newPhoto.description" name="description" placeholder="Description" required />
         <label> Private </label>
         <input type="checkbox" [(ngModel)]="newPhoto.priv" name="priv" checked>
@@ -14,20 +14,21 @@
 
   <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <h3>Select file</h3>
-      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <input class="btn-file" id="my-file" type="file" ng2FileSelect [uploader]="uploader" />
+      <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
     </div>
 
-    <div class="col-md-9" style="margin-bottom: 40px">
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <table class="table">
         <thead>
           <tr>
-            <th width="50%">Name</th>
+            <th>Name</th>
           </tr>
         </thead>
         <tbody>
-          <tr >
+          <tr>
             <td><strong>{{ uploader.queue[0]?.file?.name }}</strong></td>
           </tr>
         </tbody>

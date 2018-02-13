@@ -1,19 +1,24 @@
-.knot{
-  width: 90%;
-  margin-left: 5%;
+.row:nth-child(2n){
+  background-color: #e1d9d961;
 }
 
- .knot div {
-   font-size: 3.5vw;
+
+.row div > div {
+   font-size: 2vw;
    display:inline-block;
    margin-bottom: 2vh;
    text-align: justify;
   }
 
-.knot img {
-  width: 60%;
-  margin-left: 10%;
+.knotImg {
+  width: 70%;
+  margin-left:15%;
+}
+
+.knotImg img {
+  width: 100%;
 }
 .title{
   color:red;
+  padding-top:2rem;
 }

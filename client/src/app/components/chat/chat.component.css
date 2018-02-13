@@ -33,10 +33,6 @@
   margin-right: 1vw;
 }
 
-/*.panel-body {
-  overflow-y: scroll;
-  height: 250px;
-}*/
 .panel-body {
   overflow: scroll;
   height: 60vh;

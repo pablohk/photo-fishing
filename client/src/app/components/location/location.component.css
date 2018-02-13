@@ -1,12 +1,16 @@
 .container {
   width: 90%;
 }
+.map {
+  margin:1rem 0;
+}
+.row {
+  margin:0;
+  padding:1rem 0;
+}
 @media (max-width: 450px) {
   agm-map {
     height: 200px;
-  }
-  .attach {
-    margin-bottom:1vh;
   }
 }
 @media (min-width: 451px) and (max-width: 800px) {

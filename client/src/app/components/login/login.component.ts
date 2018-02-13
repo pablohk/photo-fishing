@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute , Router } from '@angular/router';
 
 // MODELS
@@ -25,14 +25,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-    this.error = params['error'];})
+      this.error = params['error'];})
 
     this.route.queryParams.subscribe(params => {
-    this.error = params['error'];})
-
-    this.authService.logout();
+      this.error = params['error'];})
 
   }
+
 
   onSubmitLogin(loginForm) {
     this.authService.login(this.formInfo).subscribe(
@@ -41,7 +40,10 @@ export class LoginComponent implements OnInit {
         loginForm.reset();
         this.router.navigate(['/home']);
       },
-      (error) => { this.error = error;}
+      (error) => {
+        this.error = error;
+        setTimeout(()=>{this.error=null},2000);
+      }
     );
   }
 }

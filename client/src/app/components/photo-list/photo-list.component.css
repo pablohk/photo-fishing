@@ -3,15 +3,29 @@
   color: red;
   font-size: 3rem;
   text-align: justify;
+  width: 90%;
+}
+.container {
+  width: 100%;
 }
 
 .description p{
-  font-size: 3.5vw;
+  width: 100%;
+  font-size: 1rem;
   text-align: justify;
 }
 
 .description h4{
-  font-size: 5vw;
-  text-align:center;
+  font-size: 2rem;
+  text-align:justify;
   color:#b4c710;
+  width: 100%;
+}
+img {
+  width: 100%;
+}
+hr {
+  width:100%;
+  background-color:#a1a1a1 !important;
+  height:1px;
 }

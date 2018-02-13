@@ -1,26 +1,27 @@
 <div class="container">
   <p class="error" *ngIf="error">{{ error }}</p>
   <div class="map">
-    <agm-map [latitude]="latInit" [longitude]="lonInit" [zoom]="zoom"  (mapClick)="mapClicked($event)">
+    <agm-map [latitude]="latInit" [longitude]="lonInit" [zoom]="zoom"
+        [streetViewControl]="false" (mapClick)="mapClicked($event)">
       <agm-marker [latitude]= "newLat" [longitude]= "newLon">
       </agm-marker>
     </agm-map>
   </div>
   <div>
     <form (ngSubmit)="onSubmitLocation(locatForm)" #locatForm="ngForm" novalidate>
-      <div class="row" style="margin-top:2vh">
+      <div class="row">
         <input class="col-xs-5" type="number" name="name" [(ngModel)]="location.lat" [value]="newLat" disabled>
         <div class="col-xs-2"></div>
         <input class="col-xs-5" type="number" name="name" [(ngModel)]="location.lon" [value]="newLon"  disabled>
       </div>
-      <div style="margin-top:1vh">
+      <div class="top-spacing">
         <label>name</label>
         <input type="text" name="name" [(ngModel)]="location.name" required>
       </div>
-      <div style="margin-top:1vh">
+      <div class="top-spacing">
         <label>rating</label>
         <input type="number" name="rating" [(ngModel)]="location.rating" min="0" max="10" required> [0-10]
-        <label style="margin-left:5vh">private</label>
+        <label class="left-positon">private</label>
         <input type="checkbox" name="private" [(ngModel)]="location.priv" chequed>
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!locatForm.valid">Submit</button>

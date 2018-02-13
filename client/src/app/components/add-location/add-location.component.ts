@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth.service';
 //MODELS
 import { Location } from '../../models/Location.model'
 
+const LAT_DEFAULT=40.392283;
+const LON_DEFAULT=-3.698536;
 
 @Component({
   selector: 'app-add-location',
@@ -44,13 +46,16 @@ export class AddLocationComponent implements OnInit {
         this.lonInit = position.coords.longitude;
         this.zoom = 13;
       });
+    }else{
+      this.latInit=LAT_DEFAULT;
+      this.lonInit=LON_DEFAULT;
+      this.zoom = 13;
     }
   }
 
   onSubmitLocation(locatForm){
     this.location.lat=this.newLat;
     this.location.lon=this.newLon;
-    console.log(this.location);
     this.locationService.add(this.location).subscribe(
       ()=>{
           locatForm.reset();
@@ -61,7 +66,6 @@ export class AddLocationComponent implements OnInit {
   }
 
   mapClicked($event) {
-    console.log($event.coords);
    this.newLat= $event.coords.lat;
    this.newLon= $event.coords.lng;
   }

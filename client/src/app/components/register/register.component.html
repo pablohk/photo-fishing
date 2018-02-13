@@ -1,43 +1,44 @@
 <div class="container">
-  <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <div class="panel-title">Sign Up</div>
-        <div style="float:right; font-size: 85%; position: relative; top:-10px">
-          <a id="signinlink" [routerLink]="['/login']">Sign In</a></div>
-      </div>
-      <div class="panel-body">
-        <form id="signupform" class="form-horizontal" role="form" (ngSubmit)="onSubmitSign(signForm)" #signForm="ngForm">
-          <div id="signupalert" style="display:none" class="alert alert-danger">
-            <p>Error:</p>
-            <span></span>
-          </div>
-          <div class="form-group">
-            <label for="username" class="col-md-3 control-label">username</label>
-            <div class="col-md-9">
-              <input type="text" class="form-control" name="username" placeholder="username" [(ngModel)]="formInfo.username" required>
+  <div *ngIf="!this.authService.isAuthenticated();">
+    <div id="signupbox" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">Sign Up</div>
+          <div class="right-pos">
+            <a id="signinlink" [routerLink]="['/login']">Sign In</a></div>
+        </div>
+        <div class="panel-body">
+          <form id="signupform" class="form-horizontal" role="form" (ngSubmit)="onSubmitSign(signForm)" #signForm="ngForm">
+            <div class="form-group">
+              <label for="username" class="col-md-3 control-label">username</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="username" placeholder="username" [(ngModel)]="formInfo.username" required>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="col-md-3 control-label">password</label>
-            <div class="col-md-9">
-              <input type="password" class="form-control" name="password" placeholder="password" [(ngModel)]="formInfo.password" required>
+            <div class="form-group">
+              <label for="password" class="col-md-3 control-label">password</label>
+              <div class="col-md-9">
+                <input type="password" class="form-control" name="password" placeholder="password" [(ngModel)]="formInfo.password" required>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-md-3 control-label">Email</label>
-            <div class="col-md-9">
-              <input type="text" class="form-control" name="email" placeholder="Email Address"  [(ngModel)]="formInfo.email" required>
+            <div class="form-group">
+              <label for="email" class="col-md-3 control-label">Email</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="email" placeholder="Email Address" [(ngModel)]="formInfo.email" required>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-offset-3 col-md-9">
-              <button id="btn-signup" [disabled]="!signForm.valid" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
-              <span style="color:red" *ngIf="error">{{error}}</span>
+            <div class="form-group">
+              <div class="col-md-offset-3 col-md-9">
+                <button id="btn-signup" [disabled]="!signForm.valid" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
+                <span class="error" *ngIf="error">{{error}}</span>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-      </div>
+  </div>
+  <div *ngIf="this.authService.isAuthenticated();">
+    {{this.router.navigate(['/home'])}}
+  </div>
 </div>

@@ -1,0 +1,20 @@
+.title {
+  margin-bottom:1vh;
+}
+.btn-file {
+    display:none;
+}
+.input-file-trigger {
+  width: 50%;
+  display: block;
+  text-align: center;
+  padding-top:1rem;
+  height: 4rem;
+  background: #5bc0de;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+}
+legend {
+  margin-left: 1rem;
+}

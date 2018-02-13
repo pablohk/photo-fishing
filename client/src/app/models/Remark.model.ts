@@ -1,5 +1,8 @@
+import {Location} from '../models/Location.model';
+import {User} from '../models/User.model';
+
 export class Remark {
-  _user : String;
-  _location : String;
+  _user : User;
+  _location : Location;
   contain : String;
 }

@@ -9,6 +9,8 @@ import { PhotoService } from '../../services/photo.service';
 // MODELS
 import { Location } from '../../models/Location.model';
 
+const LAT_DEFAULT=40.392283;
+const LON_DEFAULT=-3.698536;
 
 @Component({
   selector: 'app-location',
@@ -60,11 +62,11 @@ export class LocationComponent implements OnInit {
           this.zoom = 13;
         });
       }
+      else{
+          this.latInit=LAT_DEFAULT;
+          this.lonInit=LON_DEFAULT;
+          this.zoom = 13;
+      }
     }
-
-
- mapClicked($event) {
-   console.log($event.coords);
- }
 
 }

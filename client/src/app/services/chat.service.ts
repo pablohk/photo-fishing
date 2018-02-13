@@ -21,11 +21,8 @@ export class ChatService {
   messages:Array<Message> = [];
 
   constructor( private authService : AuthService){
-    console.log("Created chat service");
     this.socket = io.connect(`${environment.apiUrl}`);
     this.socket.on('recibe-message', function(data:any){
-      console.log(data)
-      console.log(`Mensaje Recibido: "${data.message}"`);
       this.messages.push({
         userChat: false,
         message: data.message.m,
@@ -36,7 +33,6 @@ export class ChatService {
   }
 
   sendMessage(m){
-    console.log(`Mandando mensaje: "${m}"`);
     let usr = this.authService.user.username;
     this.socket.emit('send-message',{
       message: {m,usr}
