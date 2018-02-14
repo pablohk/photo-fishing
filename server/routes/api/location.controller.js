@@ -70,7 +70,6 @@ router.put('/:id', loggedIn, isObjIdValid, (req,res,next)=>{
 
   Location.findByIdAndUpdate(req.params.id,updateObj,{new:true})
     .then(item=>{
-      console.log(item);
       res.status(200).json(item);})
     .catch( (err)=> res.status(500).json(err))
 });

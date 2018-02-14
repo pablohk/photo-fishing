@@ -51,8 +51,6 @@ console.log(req.body);
     //imageURL : `uploads/${req.file.filename}`,
     priv : req.body.priv });
 
-    console.log(newObj);
-
     newObj.save()
       .then( item => res.status(200).json(item))
       .catch ((err) => res.status(500).json(err))
