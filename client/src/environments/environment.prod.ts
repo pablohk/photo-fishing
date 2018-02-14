@@ -1,5 +1,6 @@
+import { environment as env  } from './environment';
 export const environment = {
   production: true,
    apiUrl: '',
-   apiKeyMaps: process.env.apiKeyMaps
+   apiKeyMaps: env.apiKeyMaps
 };
