@@ -7,7 +7,7 @@
     "dev": "DEBUG=server:* nodemon ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "cloudinary": "^1.9.1",
