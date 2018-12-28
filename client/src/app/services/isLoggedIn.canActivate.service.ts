@@ -1,6 +1,6 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable , OnInit }  from '@angular/core';
-import { Observable }  from 'rxjs/Rx';
+import { Observable }  from 'rxjs';
 import { ActivatedRoute, Router } from "@angular/router";
 
 //MODELS

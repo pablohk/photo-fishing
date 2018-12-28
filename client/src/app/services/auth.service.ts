@@ -1,9 +1,12 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Injectable , EventEmitter} from '@angular/core';
 import { Http, Response} from '@angular/http';
-import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { environment } from '../../environments/environment'
+
+
 
 //MODELS
 import { User } from '../models/User.model'
@@ -40,38 +43,38 @@ export class AuthService {
    }
 
    login(user):Observable<User>  {
-     return this.http.post(`${this.baseUrl}/login`, user,this.options)
-       .map(res => res.json())
-       .map(user => this.emitUserLoginEvent(user))
-       .catch(this.handleError);
+     return this.http.post(`${this.baseUrl}/login`, user,this.options).pipe(
+       map(res => res.json()),
+       map(user => this.emitUserLoginEvent(user)),
+       catchError(this.handleError),);
    }
 
    signup(user) {
-    return this.http.post(`${this.baseUrl}/signup`, user, this.options)
-      .map(res => res.json())
-      .map( user =>this.emitUserLoginEvent(user))
-      .catch(this.handleError);
+    return this.http.post(`${this.baseUrl}/signup`, user, this.options).pipe(
+      map(res => res.json()),
+      map( user =>this.emitUserLoginEvent(user)),
+      catchError(this.handleError),);
   }
 
 
   logout() {
-    return this.http.get(`${this.baseUrl}/logout`, this.options)
-      .map(res => res.json())
-      .map(user => this.emitUserLoginEvent(undefined))
-      .catch(this.handleError);
+    return this.http.get(`${this.baseUrl}/logout`, this.options).pipe(
+      map(res => res.json()),
+      map(user => this.emitUserLoginEvent(undefined)),
+      catchError(this.handleError),);
   }
 
   isLoggedIn() {
-    return this.http.get(`${this.baseUrl}/loggedin`,this.options)
-    .map(res => res.json())
-    .map(user => this.emitUserLoginEvent(user))
-    .catch(this.handleError);
+    return this.http.get(`${this.baseUrl}/loggedin`,this.options).pipe(
+    map(res => res.json()),
+    map(user => this.emitUserLoginEvent(user)),
+    catchError(this.handleError),);
   }
 
 
 
   protected handleError (error :Response | any ): Observable<any> {
-    return Observable.throw (error.json().message);
+    return observableThrowError (error.json().message);
   }
 
   handleUser(obj) {
