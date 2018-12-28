@@ -8,7 +8,7 @@ rm -rv $public_dir/*
 
 echo "Make new build................"
 cd client
-ng build
+ng build --aot -prod
 cd ..
 
 if [ ! -d $public_dir ]; then
