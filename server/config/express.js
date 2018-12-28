@@ -10,12 +10,15 @@ const passport = require('passport');
 const configure    = require('./passport');
 const cors = require('cors');
 const corsConfig = require('./cors.config');
+const debug = require('debug');
+
 module.exports = (app) => {
 
   // Mongoose configuration
   const dbURL = process.env.dbURL;
-  mongoose.connect(dbURL, {useMongoClient: true})
+  mongoose.connect(dbURL)
     .then(() => {debug(`Conected to ${dbURL}`);});
+
 
   app.use(cors(corsConfig));
   app.use(logger('dev'));
